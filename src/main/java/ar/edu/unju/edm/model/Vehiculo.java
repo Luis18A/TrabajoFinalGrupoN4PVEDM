@@ -7,15 +7,16 @@ public class Vehiculo implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String patente;
-	String color;
-	String titular;
-	String marca;
-	String modelo;
-	String tipo;
-    String numeroChasis;
-    String numeroMotor;
-    Integer IdVehiculo;
+	private Integer IdVehiculo;
+	private String patente;
+	private String color;
+	private String titular;
+	private String marca;
+	private String modelo;
+	private String tipo;
+	private String numeroChasis;
+	private String numeroMotor;
+	
 public Vehiculo() {
 	
 }
