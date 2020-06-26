@@ -1,4 +1,4 @@
-package ar.unju.edu.edm.service;
+package ar.edu.unju.edm.service;
 
 
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Vehiculo;
-import ar.unju.edu.edm.repository.IVehiculoRepository;
+import ar.edu.unju.edm.repository.IVehiculoRepository;
 
 @Service
 public class IVehiculoServiceImp implements IVehiculoService{
@@ -20,7 +20,7 @@ public class IVehiculoServiceImp implements IVehiculoService{
 		iVehiculoRepository.save(vehiculo);
 	}
 
-	@Override
+	/**@Override
 	public Vehiculo buscarVehiculo(Integer idVehiculo) {
 		// TODO Auto-generated method stub
 		return null;
@@ -31,5 +31,5 @@ public class IVehiculoServiceImp implements IVehiculoService{
 		// TODO Auto-generated method stub
 		return iVehiculoRepository.findAll();
 	}
-	
+	**/
 }

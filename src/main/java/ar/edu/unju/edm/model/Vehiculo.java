@@ -2,26 +2,55 @@ package ar.edu.unju.edm.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "vehiculos")
 public class Vehiculo implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer IdVehiculo;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+	
+	@Column(name = "PATENTE")
 	private String patente;
+	
+	@Column(name = "COLOR")
 	private String color;
+	
+	@Column(name = "TITULAR")
 	private String titular;
+	
+	@Column(name = "MARCA")
 	private String marca;
+	
+	@Column(name = "MODELO")
 	private String modelo;
+	
+	@Column(name = "TIPO")
 	private String tipo;
+	
+	@Column(name = "NCHASIS")
 	private String numeroChasis;
+	
+	@Column(name = "NMOTOR")
 	private String numeroMotor;
 	
 public Vehiculo() {
 	
 }
 public Vehiculo(String patente, String color, String titular, String marca, String modelo, String tipo,
-		String numeroChasis, String numeroMotor, Integer idVehiculo) {
+		String numeroChasis, String numeroMotor, Long id) {
 	super();
 	this.patente = patente;
 	this.color = color;
@@ -31,7 +60,7 @@ public Vehiculo(String patente, String color, String titular, String marca, Stri
 	this.tipo = tipo;
 	this.numeroChasis = numeroChasis;
 	this.numeroMotor = numeroMotor;
-	IdVehiculo = idVehiculo;
+	this.id = id;
 }
 public String getPatente() {
 	return patente;
@@ -81,23 +110,23 @@ public String getNumeroMotor() {
 public void setNumeroMotor(String numeroMotor) {
 	this.numeroMotor = numeroMotor;
 }
-public Integer getIdVehiculo() {
-	return IdVehiculo;
+public Long getId() {
+	return id;
 }
-public void setIdVehiculo(Integer idVehiculo) {
-	IdVehiculo = idVehiculo;
+public void setId(Long id) {
+	this.id = id;
 }
 @Override
 public String toString() {
 	return "Vehiculo [patente=" + patente + ", color=" + color + ", titular=" + titular + ", marca=" + marca
 			+ ", modelo=" + modelo + ", tipo=" + tipo + ", numeroChasis=" + numeroChasis + ", numeroMotor="
-			+ numeroMotor + ", IdVehiculo=" + IdVehiculo + "]";
+			+ numeroMotor + ", IdVehiculo=" + id + "]";
 }
 @Override
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + ((IdVehiculo == null) ? 0 : IdVehiculo.hashCode());
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
 	result = prime * result + ((color == null) ? 0 : color.hashCode());
 	result = prime * result + ((marca == null) ? 0 : marca.hashCode());
 	result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
@@ -117,10 +146,10 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Vehiculo other = (Vehiculo) obj;
-	if (IdVehiculo == null) {
-		if (other.IdVehiculo != null)
+	if (id == null) {
+		if (other.id != null)
 			return false;
-	} else if (!IdVehiculo.equals(other.IdVehiculo))
+	} else if (!id.equals(other.id))
 		return false;
 	if (color == null) {
 		if (other.color != null)
@@ -164,10 +193,5 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
-
-
-
-
-
 
 }
