@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import ar.edu.unju.edm.model.Vehiculo;
 
 @Repository
-public interface IVehiculoRepository extends JpaRepository<Vehiculo,Integer>{
+public interface IVehiculoRepository extends JpaRepository<Vehiculo,Long>{
 
 }

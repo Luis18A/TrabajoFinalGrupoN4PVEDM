@@ -11,56 +11,64 @@
 </head>
 <body class="container">
 	<h1>GESTION DE VEHICULOS</h1>
-	<form th:object="$(vehiculoDelForm)" th:action="@(/nuevovehiculo)" method="post">
-		<div class="form-row">
-			<div class="form-group col-sm-6">
-				<label for="inputEmail4">Titular</label> <input type="text"
-					class="form-control" id="inputEmail4" th:field=*{titular}>
-			</div>
-			<div class="form-group col-sm-6">
-				<label for="inputIdVehiculo">IdVehiculo</label> <input
-					type="Password" class="form-control" id="inputPassword4" th:field=$*{id}>
-			</div>
+	<form th:object=${vehiculoD} th:action="@{/save}" method="post">
+		<div class="form-group">
+			<label for="inputTitular">Titular</label> <input type="text"
+				class="form-control" id="inputEmail4"
+				placeholder="ingrese titular del vehiculo" th:field="*{titular}"
+				required>
 		</div>
 		<div class="form-group">
 			<label for="inputPatente">Patente</label> <input type="text"
-				class="form-control" id="inputPatente" placeholder="123 KGH 467..." th:field=$*{patente}>
+				class="form-control" id="inputPatente"
+				placeholder="ingrese patente del vehiculo" th:field="*{patente}"
+				required>
 		</div>
 		<div class="form-group">
 			<label for="inputColor">Color</label> <input type="text"
 				class="form-control" id="inputColor"
-				placeholder="Rojo, Amarillo, Negro..." th:field=$*{color}>
+				placeholder="Ingrese color del vehiculo" th:field="*{color}"
+				required>
 		</div>
 		<div class="form-row">
 			<div class="form-group col-sm-6">
 				<label for="inputMarca">Marca</label> <input type="text"
-					class="form-control" id="inputMarca" th:field=$*{marca}>
+					class="form-control" id="inputMarca"
+					placeholder="ingrese marca del vehiculo" th:field="*{marca}"
+					required>
 			</div>
 			<div class="form-group col-sm-4">
 				<label for="inputModelo">Modelo</label> <input type="text"
-					class="form-control" id="inputMarca" th:field=$*{modelo}>
+					class="form-control" id="inputMarca"
+					placeholder="ingrese modelo del vehiculo" th:field="*{modelo}"
+					required>
 			</div>
 			<div class="form-group col-sm-2">
 				<label for="inputTipo">Tipo</label> <input type="text"
-					class="form-control" id="inputTipo" th:field=$*{tipo}>
+					class="form-control" id="inputTipo" placeholder="tipo de vehiculo"
+					th:field="*{tipo}" required>
 			</div>
 		</div>
-		<div class="form-row">
+		<div class="form-group">
 			<label for="inputNumerodeChasis">Numero de Chasis</label> <input
-				type="text" class="form-control" id="inputNumerodeChasis" th:field=$*{numeroChasis}>
+				type="text" class="form-control" id="inputNumerodeChasis"
+				placeholder="ingrese numero de chasis" th:field="*{numeroChasis}"
+				required>
 		</div>
-		<div class="form-row">
+		<div class="form-group">
 			<label for="inputNumerodeMotor">Numero de Motor</label> <input
-				type="text" class="form-control" id="inputNumerodeMotor" th:field=$*{numeroMotor}>
+				type="text" class="form-control" id="inputNumerodeMotor"
+				placeholder="ingrese numero de motor" th:field="*{numeroMotor}"
+				required>
 		</div>
 		<div class="form-group">
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="gridCheck">
-				<label class="form-check-label" for="gridCheck"> ¿Estas de
+				<input class="form-check-input" type="checkbox" id="gridCheck" required>
+				<label class="form-check-label" for="gridCheck" > ¿Estas de
 					acuerdo que tus datos son correctos? </label>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-primary">Registrarse</button>
+		<button type="submit" value="Guardar" class="btn btn-primary">Registrarse</button>
 	</form>
 
 

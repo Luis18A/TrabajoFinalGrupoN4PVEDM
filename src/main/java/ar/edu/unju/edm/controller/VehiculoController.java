@@ -1,6 +1,7 @@
 package ar.edu.unju.edm.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,22 +10,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ar.edu.unju.edm.model.Vehiculo;
+import ar.edu.unju.edm.service.IVehiculoService;
 
 @Controller
 @RequestMapping
 public class VehiculoController {
 	
+	@Autowired
+	IVehiculoService vehiculoService;
 	
-	@GetMapping("/nuevovehiculo")
+	/**@RequestMapping("/vehiculos")
+	public String getVehiculoForm(Model model) {
+	return "index";
+	}
+	**/
+	@GetMapping("/nuevoVehiculo")
 	public String agregar(Model model) {
-		model.addAttribute("vehiculoDelForm",new Vehiculo());
-		return "form-vehiculo";
+		model.addAttribute("vehiculoD" ,new Vehiculo());
+		return "vehiculo";
 	}
 	
-	@PostMapping("/nuevovehiculo")
-	public String guardar(@ModelAttribute ("vehiculoDelForm") Vehiculo vehiculo, Model model) {
-		model.addAttribute(new Vehiculo());
-	return "redirect:/form-vehiculo"; 
+	@PostMapping("/save")
+	public String guardar(@ModelAttribute Vehiculo vehiculo, Model model) {
+		vehiculoService.guardarVehiculo(vehiculo);
+		return "redirect:/nuevoVehiculo"; 
 	}
 	
 }
