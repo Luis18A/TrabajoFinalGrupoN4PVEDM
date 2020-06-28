@@ -28,4 +28,10 @@ public class UsuarioController {
 		usuarioService.guardarUsuario(usuario);
 		return "redirect:/nuevoUsuario";
 	} 
+	
+	@GetMapping("/usuario")
+	public String mostrarUsuarios(Model model){
+		model.addAttribute("usuarios", usuarioService.obtenerUsuarios());		
+		return "usuario";	
+	}
 }

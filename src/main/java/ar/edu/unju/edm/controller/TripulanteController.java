@@ -29,4 +29,9 @@ public class TripulanteController {
 		return "redirect:/nuevoTripulante";
 	}
 	
+	@GetMapping("/tripulante")
+	public String mostrarTripulantes(Model model){
+		model.addAttribute("tripulantes",tripulanteService.obtenerTripulantes());
+		return "tripulante";	
+	}
 }
