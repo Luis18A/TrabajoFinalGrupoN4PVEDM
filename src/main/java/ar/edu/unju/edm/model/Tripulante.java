@@ -1,12 +1,14 @@
 package ar.edu.unju.edm.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +36,8 @@ public class Tripulante implements Serializable{
 	@Column(name = "NACIONALIDAD")
 	private String nacionalidad;
 	
+	@ManyToMany(mappedBy = "tripulantes")
+	List<RegistroTracking> registroTracking;
 	
 	public Tripulante(Long idTripulante, String documento, String apellido, String nombres, String nacionalidad) {
 		super();
@@ -42,6 +46,12 @@ public class Tripulante implements Serializable{
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.nacionalidad = nacionalidad;
+	}
+	public List<RegistroTracking> getRegistroTracking() {
+		return registroTracking;
+	}
+	public void setRegistroTracking(List<RegistroTracking> registroTracking) {
+		this.registroTracking = registroTracking;
 	}
 	public Tripulante() {
 		// TODO Auto-generated constructor stub
