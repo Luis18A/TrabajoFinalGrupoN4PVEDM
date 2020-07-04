@@ -29,7 +29,7 @@ public class VehiculoController {
 		return "vehiculoForm";
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/saveVehiculo")
 	public String guardar(@ModelAttribute Vehiculo vehiculo, Model model) {
 		vehiculoService.guardarVehiculo(vehiculo);
 		return "redirect:/nuevoVehiculo"; 
