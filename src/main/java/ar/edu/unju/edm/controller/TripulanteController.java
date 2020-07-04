@@ -31,6 +31,7 @@ public class TripulanteController {
 		return "TripulanteForm";
 	}
 	
+	
 	@GetMapping("/formulario")
 	public String cargarFormulario(Model model) {
 		model.addAttribute("TripualnteDelForm", unTripulante);

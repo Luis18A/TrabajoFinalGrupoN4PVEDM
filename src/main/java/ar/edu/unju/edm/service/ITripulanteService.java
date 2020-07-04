@@ -15,6 +15,7 @@ public interface ITripulanteService {
 	public Tripulante modificar(Tripulante unTripulante) throws Exception;
 	public void eliminar(Long id);
 	public Tripulante encontrarTripulante(Long id) throws Exception;
+	
 	public Iterable<Tripulante> listarTodos();
 
 }

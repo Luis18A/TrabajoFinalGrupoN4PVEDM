@@ -23,7 +23,8 @@ public class ITripulanteServiceImp implements ITripulanteService{
 	public List<Tripulante> obtenerTripulantes() {
 		return iTripulanteRepository.obtenerTripulantes();
 	}
-
+   
+	
 	@Override
 	public Tripulante modificar(Tripulante unTripulante) throws Exception {
 		// TODO Auto-generated method stub

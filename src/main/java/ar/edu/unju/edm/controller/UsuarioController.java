@@ -74,6 +74,7 @@ public class UsuarioController {
 		return "usuarioForm";
 	}
 	
+	
 	@PostMapping("/editarUsuario")
 	public String postEditarUsuario(@Validated @ModelAttribute("usuarioDelForm") Usuario usuario, BindingResult result, ModelMap model) {
 		if(result.hasErrors()) {
