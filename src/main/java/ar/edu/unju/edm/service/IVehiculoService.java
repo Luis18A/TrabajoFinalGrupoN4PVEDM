@@ -1,6 +1,6 @@
 package ar.edu.unju.edm.service;
 
-
+//Resubido
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +18,6 @@ public interface IVehiculoService {
 
 	public Iterable<Vehiculo> listarTodos();
 	List<Vehiculo> obtenerVehiculo();
+	
 
 }
