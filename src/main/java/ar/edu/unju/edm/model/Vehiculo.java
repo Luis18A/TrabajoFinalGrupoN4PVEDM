@@ -193,5 +193,9 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
+public static Object listarTodos() {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }

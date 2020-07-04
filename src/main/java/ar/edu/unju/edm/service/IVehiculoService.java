@@ -11,8 +11,12 @@ import ar.edu.unju.edm.model.Vehiculo;
 public interface IVehiculoService {
 	
 	public void guardarVehiculo(Vehiculo vehiculo);
-	public List<Vehiculo> obtenerVehiculos();
-/**	public Vehiculo buscarVehiculo(Integer  idVehiculo);
-	public Iterable<Vehiculo> buscarTodosVehiculo();
-	**/
+	public List<Vehiculo> obtenerUsuarios();	
+	public Vehiculo modificar(Vehiculo vehiculo) throws Exception;
+	public void eliminar(Long id);
+	public Vehiculo encontrarVehiculo(Long id) throws Exception;
+
+	public Iterable<Vehiculo> listarTodos();
+	List<Vehiculo> obtenerVehiculo();
+
 }
