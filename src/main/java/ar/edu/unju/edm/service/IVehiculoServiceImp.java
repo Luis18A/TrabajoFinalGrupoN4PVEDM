@@ -42,6 +42,11 @@ public class IVehiculoServiceImp implements IVehiculoService{
 		return iVehiculoRepository.findByPatente(patente).orElseThrow(()-> new Exception("El vehiculo no existe")) ;		
 	}
 
+	@Override
+	public void borrarVehiculoA() {
+		vehiculoAuxiliar=new Vehiculo();		
+	}
+
 	/**@Override
 	public Vehiculo buscarVehiculo(Integer idVehiculo) {
 		// TODO Auto-generated method stub

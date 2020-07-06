@@ -43,7 +43,7 @@ public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler
 			}
 		}
 		if(tipoRegistrador) {
-			redirectStrategy.sendRedirect(request, response, "/usuario");
+			redirectStrategy.sendRedirect(request, response, "/agregarRegistro");
 		}else {
 			if(tipoConsultor) {
 				redirectStrategy.sendRedirect(request, response, "/vehiculo");

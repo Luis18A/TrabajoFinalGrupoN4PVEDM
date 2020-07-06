@@ -28,14 +28,19 @@ public class RegistroTrackingController {
 	IRegistroTrackingService registroTrackingService;
 	@Autowired
 	ILocalidadService localidadService;
+	//Vehiculo unVehiculo;
 	
 	@GetMapping("/agregarRegistro")
 	public String agregarR(Model model) {	
 		model.addAttribute("registroTrackingD", new RegistroTracking());
 		model.addAttribute("tripulantes",tripulanteService.obtenerTripulantes());
 		model.addAttribute("tripulanteD", new Tripulante());
-		model.addAttribute("vehiculoD", new Vehiculo());
+		//tuve que crearlo asi para que saliera la tabla de vehiculo, "unVehiculo" paso como parametro.
+		Vehiculo unVehiculo = new Vehiculo();
+		model.addAttribute("vehiculoD", unVehiculo);
 		model.addAttribute("localidades", localidadService.obtenerLocalidades());
+		model.addAttribute("vehiculo",vehiculoService.obtenerVehiculo(unVehiculo));
+
 
 		return "registroTrackingForm";
 	}
@@ -46,6 +51,7 @@ public class RegistroTrackingController {
 			registroTracking.setTripulantes(tripulanteService.obtenerTripulantes());
 			registroTracking.setVehiculo(vehiculoService.obtenerVehiculo(vehiculoD));
 			model.addAttribute("vehiculo",vehiculoService.obtenerVehiculo(vehiculoD));
+
 			try {				
 				registroTrackingService.guardarRegistroTracking(registroTracking);		
 			} catch (Exception e) {
@@ -54,7 +60,7 @@ public class RegistroTrackingController {
 			}	
 			
 			tripulanteService.borrarTripulantes();
-			
+			vehiculoService.borrarVehiculoA();
 			
 //			noticia.setAutores(vehiculoService.obtenerVehiculos());
 //			try {				
@@ -100,5 +106,24 @@ public class RegistroTrackingController {
 		
 		return agregarR(model);
 	}
+	
+//CANCELAR NO ME SALE
+//	@GetMapping("/cancelarRegistro")
+//	public String cancelar(@ModelAttribute("registroTrackingD") RegistroTracking registroTracking, Vehiculo vehiculoD, Model model) {	
+//		tripulanteService.borrarTripulantes();
+//		vehiculoService.borrarVehiculoA();
+//		
+//
+//		return "registroTrackingForm";
+//	}
+//	
+//	
+//	@PostMapping("/cancelarRegistro")
+//	public String cancelarR(@ModelAttribute("registroTrackingD") RegistroTracking registroTracking, Vehiculo vehiculoD, Model model){
+//		tripulanteService.borrarTripulantes();
+//		vehiculoService.borrarVehiculoA();
+//		
+//		return agregarR(model);
+//	}
 	
 }

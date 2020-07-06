@@ -15,6 +15,7 @@ public interface IVehiculoService {
 	public Vehiculo obtenerVehiculo(Vehiculo vehiculo);
 	public void guardarVehiculoEncontrado(Vehiculo vehiculo);
 	public Vehiculo buscarVehiculo(String patente)  throws Exception;
+	public void borrarVehiculoA();
 /**	public Vehiculo buscarVehiculo(Integer  idVehiculo);
 	public Iterable<Vehiculo> buscarTodosVehiculo();
 	**/
