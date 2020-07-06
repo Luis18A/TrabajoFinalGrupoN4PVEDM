@@ -30,7 +30,7 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr th:each = "usuario:${usuarios}" >
+			    <tr th:each = "usuario:${usuario}" >
 			      <td th:text = "${usuario.idUsuario}"></td>
 			      <td th:text = "${usuario.nombreUsuario}"></td>
 			      <td th:text = "${usuario.password}"></td>
@@ -38,15 +38,15 @@
 			      <td th:text = "${usuario.apellidoReal}"></td>
 			      <td th:text = "${usuario.tipoUsuario}"></td>
 			      <td>
-			      	<a class="btn btn-warning">Editar</a>
-			      	<a class="btn btn-danger">Eliminar</a>
+			      	<a class="btn btn-warning" href="#" th:href="@{/editarUsuario+${usuarioD.id}}">Editar</a>
+			      	<a class="btn btn-danger" th:onclick="'javascript:confirmarEliminar(\''+{usuarioD.id}+'\');'">Eliminar</a>
 			      </td>
 			    </tr>
 			  </tbody>
 			</table>
+			<div class="alert-danger text-center" th:if="${listUsuarioErrorMessage}" th:text="${listUsuarioErrorMessage}">Name Error</div>
 		</div>	
 	</div>
-	
 
 
 <div th:insert="layout/footer :: footer"></div>

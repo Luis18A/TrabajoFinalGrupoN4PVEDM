@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 @Entity
-@Table(name = "usuarios")
+@Component
+@Table(name = "usuario")
 public class Usuario implements Serializable{
 	
 	/**
@@ -21,7 +24,7 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	public Long idUsuario;
+	private Long idUsuario;
 	@Column
 	private String nombreUsuario;
 	@Column
@@ -139,5 +142,15 @@ public class Usuario implements Serializable{
 				+ password + ", nombreReal=" + nombreReal + ", apellidoReal="
 				+ apellidoReal + ", tipoUsuario=" + tipoUsuario + "]";
 	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	
 	
 }

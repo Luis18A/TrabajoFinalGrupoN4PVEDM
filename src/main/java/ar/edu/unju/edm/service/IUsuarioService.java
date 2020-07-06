@@ -10,5 +10,5 @@ import ar.edu.unju.edm.model.Usuario;
 public interface IUsuarioService {
 
 	public void guardarUsuario(Usuario usuario);
-	public List<Usuario> obtenerUsuarios();		
+	public List<Usuario> obtenerUsuarios();
 }

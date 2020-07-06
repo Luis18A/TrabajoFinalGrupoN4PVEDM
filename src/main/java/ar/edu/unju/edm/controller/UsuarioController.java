@@ -26,12 +26,14 @@ public class UsuarioController {
 	@PostMapping("/saveUsuario")
 	public String guardarU(@ModelAttribute Usuario usuario, Model model) {
 		usuarioService.guardarUsuario(usuario);
+		model.addAttribute("usuarioD", usuario);
 		return "redirect:/nuevoUsuario";
 	} 
+
 	
 	@GetMapping("/usuario")
 	public String mostrarUsuarios(Model model){
-		model.addAttribute("usuarios", usuarioService.obtenerUsuarios());		
+		model.addAttribute("usuario", usuarioService.obtenerUsuarios());
 		return "usuario";	
 	}
 }
