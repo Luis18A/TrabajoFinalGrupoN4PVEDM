@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<meta charset="ISO-8859-1">
+<title>Registro Tracking</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="layout/header :: header"></div>
+
+	<div class="container">
+	<br>
+		<h1>REGISTRO TRACKING</h1>
+		<br>
+		<a th:href="@{/nuevoVehiculo}" class="btn btn-primary"> Agregar Vehiculo </a>
+		<button type="button" class="btn btn-success" data-toggle="modal"
+				data-target="#modalBuscarVehiculo">Buscar Vehiculo</button>		
+				<br>
+				<br>
+		<a th:href="@{/nuevoTripulante}" class="btn btn-primary"> Agregar Tripulante </a>
+		<button type="button" class="btn btn-success" data-toggle="modal"
+				data-target="#modalBuscarTripulante">Buscar Tripulante</button>
+		<!-- <a th:href="@{/nuevaLocalidad}" class="btn btn-primary"> Agregar Localidad </a>
+		<button type="button" class="btn btn-success" data-toggle="modal"
+				data-target="#modalBuscarLocalidad">Buscar Localidad</button>
+				 -->
+		
+		<br>
+		<br>
+		
+		<form id="formRegistro" th:object="${registroTrackingD}" th:action="@{/agregarRegistro}" method="post">
+			<div class="form-group">
+				<label for="detalle">Ingresar detalle de Lugar:</label>
+				<textarea class="form-control" id="detalle" rows="3" placeholder="Ingrese detalles de lugar" th:field="${registroTrackingD.detalleLugarRegistro}"></textarea> <!-- th:field="${registroTrackingD.detalleLugarRegistro}" -->
+			</div>
+			<button type="submit" class="btn btn-primary">Agregar Registro</button>
+			<!-- <button type="submit" class="btn btn-danger">Cancel</button> HACER FUNCIONAL ESTO -->
+		</form>
+		
+		<br>
+		
+		<!-- <form id="formRegistro2" th:object="${vehiculo}">
+			<div class="form-group">
+				<label th:text = "${patente}"></label>
+				<label th:text = "${marca}">patente</label>
+				<label th:text = "${color}">patente</label>
+			</div>
+		</form>-->
+		
+		
+		<div class="form-group row">
+		<label th:text="Localidad" class="form-control-label"></label>
+		<select class="form-control" th:field="${registroTrackingD.localidad}">
+		<option th:each="localidad:${localidades}" th:value="${localidad.idLocalidad}" th:text="${localidad.nombre}"></option>
+		</select>
+		</div>
+		
+		<br>
+		<br>
+		
+		<div class="card">
+		<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">#</th>
+			      		<th scope="col">Documento</th>
+			      		<th scope="col">Apellido</th>
+			      		<th scope="col">Nombres</th>
+			      		<th scope="col">Nacionalidad</th>
+					</tr>
+				</thead>
+				<tbody>					
+					<tr th:each="tripulante : ${tripulantes}">
+					      <td th:text = "${tripulante.idTripulante}"></td>
+					      <td th:text = "${tripulante.documento}"></td>
+					      <td th:text = "${tripulante.apellido}"></td>
+					      <td th:text = "${tripulante.nombres}"></td>
+					      <td th:text = "${tripulante.nacionalidad}"></td>					
+					</tr>
+
+				</tbody>
+			</table>
+			</div></div>
+		</div>
+		
+			
+		
+		<div class="modal fade" id="modalBuscarTripulante" tabindex="-1" role="dialog" aria-labelledby="buscarTripulanteModal" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				<form id="formTripulante" th:object="${tripulanteD}" th:action="@{/buscarTripulante}" method="post">
+					<div class="modal-header">
+						<h5 class="modal-title" id="buscarTripulanteModal">Buscar Tripulante</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">						
+							<div class="form-group">
+								<label for="documento">Documento:</label>
+								<input class="form-control" id="documento" th:field="${tripulanteD.documento}" placeholder="Ingresar documento de Tripulante"></input>							
+							</div>					
+					</div>				
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Buscar Tripulante" >						
+					</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="modalBuscarVehiculo" tabindex="-1" role="dialog" aria-labelledby="buscarVehiculoModal" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				<form id="formVehiculo" th:object="${vehiculoD}" th:action="@{/buscarVehiculo}" method="post">
+					<div class="modal-header">
+						<h5 class="modal-title" id="buscarVehiculoModal">Buscar Vehiculo</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">						
+							<div class="form-group">
+								<label for="patente">Patente:</label>
+								<input class="form-control" id="patente" th:field="${vehiculoD.patente}" placeholder="Ingresar patente de Vehiculo"></input>							
+							</div>					
+					</div>				
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Buscar Vehiculo" >						
+					</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		
+		<br>
+		<br>
+		
+		
+		
+			
+		
+	</div>
+	
+	
+	
+	
+<div class="alert-danger text-center" th:if="${formTripulanteErrorMessage}" th:text="${formTripulanteErrorMessage}">Name Error</div>
+<div class="alert-danger text-center" th:if="${formVehiculoErrorMessage}" th:text="${formVehiculoErrorMessage}">Name Error</div>
+
+
+<div th:insert="layout/footer :: footer"></div>
+</body>
+</html>
