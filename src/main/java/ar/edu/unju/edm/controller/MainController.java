@@ -38,4 +38,12 @@ public class MainController {
           
         return "redirect:/login?logout";
     }
+	
+	
+	
+	@GetMapping("/consultas")
+	public String consultar(){
+		return "consultas";
+	}
+	
 }
