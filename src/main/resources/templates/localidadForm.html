@@ -15,7 +15,8 @@
 	<div class="container">
 	<br>
 	<h1>GESTION DE LOCALIDADES</h1>
-	<form th:object=${localidadD} th:action="@{/saveLocalidad}" method="post">
+	<form autocomplete="off" th:object=${localidadD} th:action="${editMode}?@{/editarLocalidad}:@{/saveLocalidad}" method="post">
+			<input class="form-control" type=hidden th:field="*{idLocalidad}" th:if="${editMode}">
 			<div class="form-group row">
 				<label for="localidad">Localidad</label> 
 				<input type="text"
@@ -25,12 +26,36 @@
 			
 				<div class="form-group">
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<input class="form-check-input" type="checkbox" id="gridCheck" required>
 						<label class="form-check-label" for="gridCheck"> ¿Estas de
 							acuerdo que los datos son correctos? </label>
 					</div>
 				</div>
-					<button type="submit" class="btn btn-primary">Agregar</button>
+					<div class="form-group row">
+						<div class="col-lg-12 text-center">		
+						<a class="btn btn-secundary" th:href="@{'/cancelarL'}">Cancelar</a>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">Guardar Localidad</button>
+						</div>
+					</div>
+				<div class="alert-danger text-center" th:if="${formLocalidadErrorMessage}" th:text="${formLocalidadErrorMessage}">Name Error</div>
+		
+				<div class="modal fade" id="modalAgregar" tabindex="-1"	role="dialog" aria-labelledby="agregarModalTitulo" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="agregarModalTitulo">Confirmar Agregar</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body"><h7>¿Estás seguro que quieres guardar los cambios?</h7></div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">Cerrar</button>
+											<input type="submit" class="btn btn-primary" value="Save Changes"  th:value="${editMode}?'Guardar Localidad':'Crear Localidad'">
+										</div>
+									</div>
+								</div>
+				</div>
 	</form>
 	<br>
 	</div>

@@ -11,6 +11,10 @@ public interface ILocalidadService {
 	
 	public void guardarLocalidad(Localidad localidad);
 	public List<Localidad> obtenerLocalidades();
-	public Localidad obtenerLocalidad(List<Localidad> localidad);
+//	public Localidad obtenerLocalidad(List<Localidad> localidad);
+	
+	public Localidad modificar(Localidad unaLocalidad) throws Exception;
+	public void eliminar(Long id);
+	public Localidad encontrarLocalidad(Long id) throws Exception;
 
 }

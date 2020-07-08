@@ -18,8 +18,9 @@
 	<h1>FORMULARIO DE USUARIO</h1>
 	<br>
 		<form autocomplete="off" th:object=${usuarioD} th:action="${editMode}?@{/editarUsuario}:@{/saveUsuario}" method="post">
-		<input class="form-control" type=hidden th:field="${usuarioD.id}" th:if="${editMode}">
-		<input class="form-control" type=hidden th:field="${usuarioD.password}" th:if="${editMode}">
+		<input class="form-control" type=hidden th:field="*{idUsuario}" th:if="${editMode}">
+		<input class="form-control" type=hidden th:field="*{password}" th:if="${editMode}">
+		<input class="form-control" type=hidden th:field="*{tipoUsuario}" th:if="${editMode}">
 		<div class="form-group row">
 			<label for="nombre" class="col-sm-3 col-form-label">Ingresar
 				Usuario</label>
@@ -65,7 +66,7 @@
 			</div>
 		</div>-->
 		
-		<fieldset class="form-group">
+		<fieldset class="form-group" th:if="${editMode==null or editMode==false}">
 			    <div class="row">
 			      <legend class="col-form-label col-sm-3 pt-0">Tipo de usuario</legend>
 			      <div class="col-sm-9">
@@ -81,6 +82,7 @@
 			          <input class="form-check-input" type="radio" name="tipoUsuario" id="Bd" value="Bd">
 			          <label class="form-check-label" for="Bd">Bd</label>
 			        </div>
+			        <!-- <div class="alert-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Name	Error</div> -->
 			      </div>
 			    </div>
 			  </fieldset>
@@ -96,11 +98,31 @@
 		</div>
 
 		<div class="form-group row">
-		<button type="submit" value="Guardar" class="btn btn-primary" th:value="${editMode}?'Guardar Usuario':'Crear Usuario'">Agregar
-			Usuario</button>
-			<button class="btn btn-secundary" th:href="@{'/cancelar'}">Cancelar</button>
-		
+			<div class="col-lg-12 text-center">		
+			<a class="btn btn-secundary" th:href="@{'/cancelar'}">Cancelar</a>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">Guardar Usuario</button>
+			</div>
 		</div>
+		
+		<div class="alert-danger text-center" th:if="${formUsuarioErrorMessage}" th:text="${formUsuarioErrorMessage}">Name Error</div>
+		
+				<div class="modal fade" id="modalAgregar" tabindex="-1"	role="dialog" aria-labelledby="agregarModalTitulo" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="agregarModalTitulo">Confirmar Agregar</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body"><h7>¿Estás seguro que quieres guardar los cambios?</h7></div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">Cerrar</button>
+											<input type="submit" class="btn btn-primary" value="Save Changes"  th:value="${editMode}?'Guardar Usuario':'Crear Usuario'">
+										</div>
+									</div>
+								</div>
+				</div>
 		</form>
 	</div>
 	<br>

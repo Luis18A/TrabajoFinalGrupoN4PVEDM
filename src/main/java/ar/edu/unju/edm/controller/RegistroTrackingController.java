@@ -3,6 +3,7 @@ package ar.edu.unju.edm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -107,23 +108,11 @@ public class RegistroTrackingController {
 		return agregarR(model);
 	}
 	
-//CANCELAR NO ME SALE
-//	@GetMapping("/cancelarRegistro")
-//	public String cancelar(@ModelAttribute("registroTrackingD") RegistroTracking registroTracking, Vehiculo vehiculoD, Model model) {	
-//		tripulanteService.borrarTripulantes();
-//		vehiculoService.borrarVehiculoA();
-//		
-//
-//		return "registroTrackingForm";
-//	}
-//	
-//	
-//	@PostMapping("/cancelarRegistro")
-//	public String cancelarR(@ModelAttribute("registroTrackingD") RegistroTracking registroTracking, Vehiculo vehiculoD, Model model){
-//		tripulanteService.borrarTripulantes();
-//		vehiculoService.borrarVehiculoA();
-//		
-//		return agregarR(model);
-//	}
+	@GetMapping("/agregarRegistro/cancelar")
+	public String cancelarRegistro(ModelMap model){
+		tripulanteService.borrarTripulantes();
+		vehiculoService.borrarVehiculoA();
+		return "redirect:/agregarRegistro";
+	}
 	
 }
