@@ -115,4 +115,36 @@ public class RegistroTrackingController {
 		return "redirect:/agregarRegistro";
 	}
 	
+	
+	
+	//agregado
+	@GetMapping("/consultas")
+	public String consultar(Model model){
+		Vehiculo unVehiculo = new Vehiculo();
+		model.addAttribute("vehiculoD", unVehiculo);
+		return "consultas";
+	}
+	
+	
+	//agregado
+	@PostMapping("/buscarListadoPatente")
+	public String buscarListadoPatente(@ModelAttribute Vehiculo vehiculo, Model model) throws Exception{
+		try{
+			Vehiculo vehiculoEncontrado = vehiculoService.buscarVehiculo(vehiculo.getPatente());
+			try{
+				Long id = vehiculoService.devolverIdPatente(vehiculoEncontrado);
+				model.addAttribute("registrosTrackingO",registroTrackingService.obtenerRegistros(id));				
+//				model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
+				//vehiculoService.listarRegistros(id);
+			}catch(Exception e){
+				model.addAttribute("formVehiculoErrorMessage", e.getMessage());							
+			}
+		}catch(Exception e){
+			model.addAttribute("formVehiculoErrorMessage", e.getMessage());
+		}
+		
+		return "consultaTres";
+	}
+	
+	
 }

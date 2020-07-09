@@ -14,30 +14,32 @@
 	<br>
 	<div class="card">
 		<div class="card-body">
-		<p class="font-weight-bold" >Listado de vehículos por una localidad y rango de fechas-horas</p>
-		<button type="button" class="btn btn-primary" data-toggle="modal"
+		<h6 class="p-3 mb-2 bg-dark text-white card-title">Listado de vehículos por una localidad y rango de fechas-horas</h6>
+		<br>
+		<button type="button" class="btn btn-primary" data-toggle="modal"		
 				data-target="#modalBuscarTripulante">BUSCAR</button>
-				<br>
 				<br>
 		</div>
 	</div>
 	<br>
 	<div class="card">
 		<div class="card-body">
-		<p class="font-weight-bold" >Listado de recorrido por tripulante ordenado por día y hora</p>
+		<h6 class="p-3 mb-2 bg-dark text-white card-title">Listado de recorrido por tripulante ordenado por día y hora</h6>
+		<br>
 		<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#modalBuscarTripulante">BUSCAR</button>
-				<br>
+				
 				<br>
 		</div>
 	</div>
 	<br>
 	<div class="card">
 		<div class="card-body">
-		<p class="font-weight-bold" >Listado de recorridos por patente ordenado por día y hora</p>
+		<h6 class="p-3 mb-2 bg-dark text-white card-title">Listado de recorridos por patente ordenado por día y hora</h6>
+		<br>
 		<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#modalBuscarPatente">BUSCAR</button>
-				<br>
+				
 				<br>
 		</div>
 	</div>
@@ -47,28 +49,31 @@
 			
 	<!-- consulta de patente -->
 			
-			<div class="modal fade" id="modalBuscarPatente" tabindex="-1" role="dialog" aria-labelledby="buscarPatenteModal" aria-hidden="true">
+		<div class="modal fade" id="modalBuscarPatente" tabindex="-1" role="dialog" aria-labelledby="buscarVehiculoModal" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
-				<form id="forPatente" th:object="${registroTrackingD}" th:action="@{/buscarListadoPatente}" method="post">
+				<form id="formVehiculo" th:object="${vehiculoD}" th:action="@{/buscarListadoPatente}" method="post">
 					<div class="modal-header">
-						<h5 class="modal-title" id="buscarPatenteModal">Buscar Tripulante</h5>
+						<h5 class="modal-title" id="buscarVehiculoModal">Buscar Vehiculo</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">						
+					<div class="modal-body">
 							<div class="form-group">
-								<label for="documento">Patente:</label>
-								<input class="form-control" id="documento" th:field="${registroTrackingD.vehiculo.patente}" placeholder="Ingresar patente de Vehiculo"></input>							
+								<label for="patente">Patente:</label>
+								<input class="form-control" id="patente" th:field="${vehiculoD.patente}" placeholder="Ingresar patente de Vehiculo"></input>							
 							</div>					
 					</div>				
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<input type="submit" class="btn btn-primary" value="Buscar Patente" >						
+						<input type="submit" class="btn btn-primary" value="Buscar Vehiculo" >						
 					</div>
 					</form>
+
+				</div>
+			</div>
 
 				</div>
 			</div>

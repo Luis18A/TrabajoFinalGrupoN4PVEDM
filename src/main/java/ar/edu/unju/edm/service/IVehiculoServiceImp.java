@@ -50,33 +50,13 @@ public class IVehiculoServiceImp implements IVehiculoService{
 
 	
 	
+	
+	//agregado
 	@Override
 	public Long devolverIdPatente(Vehiculo vehiculo) {
 		return vehiculo.getId();
 	}
-//	
-//	public List<RegistroTracking> buscarRegistros(Long id){
-//		List<RegistroTracking> lista = iVehiculoRepository.findByIdVehiculo(id);
-//		return lista;
-//	}
-//	
-//	
-//	public List<RegistroTracking> listarRegistros(){
-//		return registros;
-//	}
 	
-
-//	@Override
-//	public List<RegistroTracking> obtenerRegistrosOrdenados(String patente) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public RegistroTracking buscarRegistroTracking(String patente) throws Exception{
-//		return iVehiculoRepository.findByPatenteRegistro(patente).orElseThrow(()-> new Exception("El vehiculo no existe")) ;		
-//	}
-
 	
 
 

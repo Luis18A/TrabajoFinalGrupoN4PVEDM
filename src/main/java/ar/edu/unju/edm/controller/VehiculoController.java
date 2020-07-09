@@ -46,34 +46,4 @@ public class VehiculoController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-//	consulta3
-//	@PostMapping("/buscarListadoPatente")
-//	public String buscarListadoPatente(@ModelAttribute RegistroTracking registroTracking, Vehiculo vehiculo, Model model) throws Exception{
-//		try{
-//			Vehiculo vehiculoEncontrado = vehiculoService.buscarVehiculo(vehiculo.getPatente());
-//			try{
-//				Long id = vehiculoService.devolverIdPatente(vehiculoEncontrado);
-//				vehiculoService.listarRegistros(id);
-//			}catch(Exception e){
-//				model.addAttribute("formVehiculoErrorMessage", e.getMessage());							
-//			}
-//		}catch(Exception e){
-//			model.addAttribute("formVehiculoErrorMessage", e.getMessage());
-//		}
-//		
-//		return "consultaTres";
-//	}
-	
-	
-	
-	
-	
-	
 }

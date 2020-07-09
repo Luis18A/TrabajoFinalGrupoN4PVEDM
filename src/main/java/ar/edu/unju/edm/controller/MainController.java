@@ -41,9 +41,9 @@ public class MainController {
 	
 	
 	
-	@GetMapping("/consultas")
-	public String consultar(){
-		return "consultas";
-	}
+//	@GetMapping("/consultas")
+//	public String consultar(){
+//		return "consultas";
+//	}
 	
 }
