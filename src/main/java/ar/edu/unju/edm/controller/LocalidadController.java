@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ar.edu.unju.edm.model.Localidad;
 import ar.edu.unju.edm.service.ILocalidadService;
 
-@Controller
+@Controller 
 @RequestMapping
 public class LocalidadController {
 	

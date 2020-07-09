@@ -19,4 +19,5 @@ public interface IVehiculoService {
 /**	public Vehiculo buscarVehiculo(Integer  idVehiculo);
 	public Iterable<Vehiculo> buscarTodosVehiculo();
 	**/
+	
 }
