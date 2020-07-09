@@ -16,8 +16,14 @@ public interface IVehiculoService {
 	public void guardarVehiculoEncontrado(Vehiculo vehiculo);
 	public Vehiculo buscarVehiculo(String patente)  throws Exception;
 	public void borrarVehiculoA();
+	
+//	public Long devolverIdPatente(Vehiculo vehiculo);
+//	
+//	
+	
+	//public List<RegistroTracking> obtenerRegistrosOrdenados(String patente);
+//	public RegistroTracking buscarRegistroTracking(String patente) throws Exception;
 /**	public Vehiculo buscarVehiculo(Integer  idVehiculo);
 	public Iterable<Vehiculo> buscarTodosVehiculo();
 	**/
-	
 }
