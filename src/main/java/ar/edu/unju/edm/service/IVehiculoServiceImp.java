@@ -50,10 +50,10 @@ public class IVehiculoServiceImp implements IVehiculoService{
 
 	
 	
-//	@Override
-//	public Long devolverIdPatente(Vehiculo vehiculo) {
-//		return vehiculo.getId();
-//	}
+	@Override
+	public Long devolverIdPatente(Vehiculo vehiculo) {
+		return vehiculo.getId();
+	}
 //	
 //	public List<RegistroTracking> buscarRegistros(Long id){
 //		List<RegistroTracking> lista = iVehiculoRepository.findByIdVehiculo(id);
