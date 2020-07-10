@@ -90,8 +90,7 @@ public class LocalidadController {
 			model.addAttribute("listErrorMessage", e.getMessage());
 		}
 		
-		return mostrarLocalidades(model);
-		
+		return "redirect:/localidad";		
 	}
 	
 	
