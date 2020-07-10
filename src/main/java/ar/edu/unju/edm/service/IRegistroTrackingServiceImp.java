@@ -26,5 +26,11 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService{
 		List<RegistroTracking> registros = iRegistroTrackingRepository.findByIdVehiculoOrderByFechaHoraAsc(id);
 		return registros;
 	}
-
+	//agrego
+	@Override
+	public List<RegistroTracking> obtenerRegistrosT(Long id) {
+		// TODO Auto-generated method stub
+		List<RegistroTracking> registros = iRegistroTrackingRepository.findByIdTripulanteOrderByFechaHoraAsc(id);
+		return registros;
+	}
 }

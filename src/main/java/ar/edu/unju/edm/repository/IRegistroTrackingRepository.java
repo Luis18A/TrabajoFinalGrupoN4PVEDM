@@ -11,11 +11,9 @@ import ar.edu.unju.edm.model.RegistroTracking;
 
 @Repository
 public interface IRegistroTrackingRepository extends JpaRepository<RegistroTracking,Long>{
-	
 	//agregado
-	//Query("from RegistroTracking e order by e.vehiculo")	
-	//@Query("select e from RegistroTracking e order by e.fechaHora")	
-
+	@Query("SELECT a FROM RegistroTracking a WHERE a.vehiculo.id = :id")	
+	List<RegistroTracking> findByIdTripulanteOrderByFechaHoraAsc(@Param("id") Long id);
 	@Query("SELECT a FROM RegistroTracking a WHERE a.vehiculo.id = :id")	
 	List<RegistroTracking> findByIdVehiculoOrderByFechaHoraAsc(@Param("id") Long id);
 }

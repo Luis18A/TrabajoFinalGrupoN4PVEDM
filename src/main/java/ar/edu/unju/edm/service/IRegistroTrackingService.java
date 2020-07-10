@@ -10,7 +10,9 @@ import ar.edu.unju.edm.model.RegistroTracking;
 public interface IRegistroTrackingService {
 
 	public void guardarRegistroTracking(RegistroTracking registroTracking);
-	//agregado
+	
 	public List<RegistroTracking> obtenerRegistros(Long id);
+	//agregado T
+	public List<RegistroTracking> obtenerRegistrosT(Long id);
 
 }

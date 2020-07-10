@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="layout/header2 :: header2"></div>
+
+	<div class="container">
+	<br>
+		<div class="card">
+		<div class="card-body">
+		<h6 class="p-3 mb-2 bg-dark text-white card-title">Listado de recorrido por tripulante ordenado por día y hora</h6>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">#</th>
+			      		<th scope="col">Nombres</th>
+			      		<th scope="col">Apellido</th>
+			      		<th scope="col">Localidad</th>
+			      		<th scope="col">Fecha y Hora</th>
+			      		<th scope="col">Detalles del lugar</th>
+					</tr>
+				</thead>
+				<tbody>					
+					<tr th:each="registroTracking : ${oT}">
+					      <td th:text = "${registroTracking.idRegistro}"></td>
+					      <td th:text = "${registroTracking.tripulante.nombres}"></td>
+					      <td th:text = "${registroTracking.tripulante.apellido}"></td>
+					      <td th:text = "${registroTracking.localidad.nombre}"></td>
+					      <td th:text = "${registroTracking.fechaHora}"></td>
+					      <td th:text = "${registroTracking.detalleLugarRegistro}"></td>
+					</tr>
+
+				</tbody>
+			</table>
+			</div></div>
+		</div>
+		
+	</div>
+	
+
+
+<div th:insert="layout/footer :: footer"></div>
+</body>
+</html>

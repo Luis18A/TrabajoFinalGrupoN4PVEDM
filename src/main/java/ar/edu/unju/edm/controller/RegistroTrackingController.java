@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +38,8 @@ public class RegistroTrackingController {
 		model.addAttribute("registroTrackingD", new RegistroTracking());
 		model.addAttribute("tripulantes",tripulanteService.obtenerTripulantes());
 		model.addAttribute("tripulanteD", new Tripulante());
+		//bandera
+		model.addAttribute("editMode", "false");
 		//tuve que crearlo asi para que saliera la tabla de vehiculo, "unVehiculo" paso como parametro.
 		Vehiculo unVehiculo = new Vehiculo();
 		model.addAttribute("vehiculoD", unVehiculo);
@@ -91,7 +95,7 @@ public class RegistroTrackingController {
 		
 		return agregarR(model);
 	}
-	
+	//Cmbiar bandera a true
 	@PostMapping("/buscarVehiculo")
 	public String buscarV(@ModelAttribute Vehiculo vehiculo, Model model) throws Exception{
 		try{
@@ -103,6 +107,7 @@ public class RegistroTrackingController {
 			}
 		}catch(Exception e){
 			model.addAttribute("formVehiculoErrorMessage", e.getMessage());
+			//bandera true
 		}
 		
 		return agregarR(model);
@@ -116,35 +121,32 @@ public class RegistroTrackingController {
 	}
 	
 	
-	
-	//agregado
+	//agregado nuevo tripulante
 	@GetMapping("/consultas")
 	public String consultar(Model model){
 		Vehiculo unVehiculo = new Vehiculo();
 		model.addAttribute("vehiculoD", unVehiculo);
+		Tripulante tripulante = new Tripulante();
+		model.addAttribute("tripulanteD", tripulante);
 		return "consultas";
 	}
-	
-	
-	//agregado
-	@PostMapping("/buscarListadoPatente")
-	public String buscarListadoPatente(@ModelAttribute Vehiculo vehiculo, Model model) throws Exception{
-		try{
-			Vehiculo vehiculoEncontrado = vehiculoService.buscarVehiculo(vehiculo.getPatente());
+			//agregado Buscar tripulante por documento
+		@PostMapping("/buscarListadoTripulante")
+		public String buscarListadoTripulante(@ModelAttribute Tripulante tripulante, Model model) throws Exception{
 			try{
-				Long id = vehiculoService.devolverIdPatente(vehiculoEncontrado);
-				model.addAttribute("registrosTrackingO",registroTrackingService.obtenerRegistros(id));				
-//				model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
-				//vehiculoService.listarRegistros(id);
+				Tripulante tripulanteEncontrado = tripulanteService.buscarTripulante(tripulante.getDocumento());
+				try{
+					Long id = tripulanteService.devolverIdTripulante(tripulanteEncontrado);
+					System.out.println(id);
+					model.addAttribute("oT",registroTrackingService.obtenerRegistros(id));				
+					//model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
+					//vehiculoService.listarRegistros(id);
+				}catch(Exception e){
+					model.addAttribute("formTripulanteErrorMessage", e.getMessage());							
+				}
 			}catch(Exception e){
-				model.addAttribute("formVehiculoErrorMessage", e.getMessage());							
+				model.addAttribute("formTripulanteErrorMessage", e.getMessage());
 			}
-		}catch(Exception e){
-			model.addAttribute("formVehiculoErrorMessage", e.getMessage());
+			return "consultaDos";
 		}
-		
-		return "consultaTres";
-	}
-	
-	
 }
