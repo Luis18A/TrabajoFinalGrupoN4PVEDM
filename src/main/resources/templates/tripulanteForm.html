@@ -15,7 +15,7 @@
 	<div class="container">
 	<br>
 	<h1>GESTION DE TRIPULANTES</h1>
-	<form th:object=${tripulanteD} th:action="@{/saveTripulante}" method="post">
+	<form autocomplete="off" th:object=${tripulanteD} th:action="@{/saveTripulante}" method="post">
 			<div class="form-group row">
 				<label for="inputEmail4">Documento</label> <input type="number"
 					class="form-control" id="inputEmail4" placeholder="Ingrese Numero de Documento" th:field="*{documento}"

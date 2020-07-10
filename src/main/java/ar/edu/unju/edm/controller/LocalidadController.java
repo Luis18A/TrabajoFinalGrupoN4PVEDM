@@ -1,6 +1,6 @@
 package ar.edu.unju.edm.controller;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,7 +59,7 @@ public class LocalidadController {
 	
 	
 	@PostMapping("/editarLocalidad")
-	public String postEditarLocalidad(@Valid @ModelAttribute("localidadD") Localidad localidad, BindingResult result, ModelMap model) {
+	public String postEditarLocalidad(@ModelAttribute("localidadD") Localidad localidad, BindingResult result, ModelMap model) {
 		if(result.hasErrors()) {
 			model.addAttribute("localidadD", localidad);
 			model.addAttribute("editMode", "true");

@@ -1,6 +1,6 @@
 package ar.edu.unju.edm.controller;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,7 +57,7 @@ public class UsuarioController {
 	
 	
 	@PostMapping("/editarUsuario")
-	public String postEditarUsuario(@Valid @ModelAttribute("usuarioD") Usuario usuario, BindingResult result, ModelMap model) {
+	public String postEditarUsuario(@ModelAttribute("usuarioD") Usuario usuario, BindingResult result, ModelMap model) {
 		if(result.hasErrors()) {
 //si da error el objeto recibido se vuelve a enviar a la vista, esta parte es ESPECIFICAMENTE PARA RESTRICCIONES COMO LA CONTRASEÑA DE MINIMO 8 CARACTERES , VER!
 			model.addAttribute("usuarioD", usuario);

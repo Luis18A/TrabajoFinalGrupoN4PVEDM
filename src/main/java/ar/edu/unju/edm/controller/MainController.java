@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -13,12 +14,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ar.edu.unju.edm.service.IUsuarioService;
-
+//implemento del errorcontroller
 @Controller
-public class MainController {
+public class MainController implements ErrorController{
 	
 	@Autowired
 	IUsuarioService usuarioService;
+	
+	//Declaraciondevariablepararedirigirelerror
+	private static final String PATH="/error";
+	
 	@RequestMapping("/home") 
 	public String main(Model model) {
 		return "home";
@@ -38,12 +43,22 @@ public class MainController {
           
         return "redirect:/login?logout";
     }
+	//vista base de datos
+	//@GetMapping("/vistaBd")
+	//public String vistaBd(Model model) {
+	//	return "vistaBd";
+	//}
 	
+	//Valor que retorna en este caso el html error
+	@RequestMapping(value=PATH)
+	public String defaultErrorMessage() {
+		return "error";
+	}
 	
-	
-//	@GetMapping("/consultas")
-//	public String consultar(){
-//		return "consultas";
-//	}
-	
+	//agrego el metodo errorpath
+	@Override
+	public String getErrorPath() {
+		// TODO Auto-generated method stub
+		return PATH;
+	}
 }

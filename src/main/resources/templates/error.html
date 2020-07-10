@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<meta charset="ISO-8859-1">
+<title>Bienvenido</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div th:insert="layout/header2 :: header2"></div>
+	<div class="container">
+		<br>
+		<br>
+	<div class="row">
+		<div class="col text-center">
+		<h1>Error: El recurso requerido no está disponible!!</h1>
+		</div>
+		</div>
+		<br> <br>
+		<div class="row">
+		<div class="col text-center">
+			<button onclick="location.href='/login'" type="button" class="btn btn-outline-success">Volver</button>
+		</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col text-center">
+			<h5>Consulte a servicio técnico</h5>
+			</div>
+		</div>
+		<br>
+	</div>
+	<div th:insert="layout/footer :: footer"></div>
+</body>
+</html>
