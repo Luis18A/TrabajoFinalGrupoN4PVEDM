@@ -17,4 +17,6 @@ public interface ITripulanteService {
 	public Tripulante buscarTripulante(String documento)  throws Exception;
 	public void borrarTripulantes();
 
+	//ultimo agregado
+	public Long devolverIdTripulante(Tripulante tripulante);
 }

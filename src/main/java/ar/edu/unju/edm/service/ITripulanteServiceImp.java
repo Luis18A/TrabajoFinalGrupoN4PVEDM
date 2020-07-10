@@ -48,4 +48,10 @@ public class ITripulanteServiceImp implements ITripulanteService{
 	public void borrarTripulantes() {
 		listadoAuxiliar = new ArrayList<>();
 	}
+	//Agrego devolver tripulante
+	@Override
+	public Long devolverIdTripulante(Tripulante tripulante) {
+		// TODO Auto-generated method stub
+		return tripulante.getIdTripulante();
+	}
 }
