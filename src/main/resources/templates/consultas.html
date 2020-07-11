@@ -1,26 +1,108 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
 <meta charset="ISO-8859-1">
-<title>Usuarios</title>
+<title>CONSULTAS</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link th:rel="stylesheet" th:href="@{/css/tempusdominus-bootstrap-4.min.css}"/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+ 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>		
+ 
+<script th:src="@{/js/moment.min.js}"></script>		
+<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
+
 </head>
 <body>
-<div th:insert="layout/header2 :: header2"></div>
 
+<!-- <div th:insert="layout/header2 :: header2"></div> -->
 	
 	<div class="container">
 	<br>
 	<div class="card">
 		<div class="card-body">
 		<h6 class="p-3 mb-2 bg-dark text-white card-title">Listado de vehículos por una localidad y rango de fechas-horas</h6>
+		<form class="form" role="form" autocomplete="off" th:object="${consulta}" th:action="@{/buscarFechas}" method="post">
 		<br>
-		<button type="button" class="btn btn-primary" data-toggle="modal"		
-				data-target="#modalBuscarTripulante">BUSCAR</button>
-				<br>
+		<div>
+		<p  class="font-italic">Ingrese las fechas y presione "Agregar Fechas", luego click en "BUSCAR".</p>
+		</div>
+	<div class="form-group row">
+		<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha inicial:</label>
+		<div class="col-lg-9 input-group date" id="datetimepicker1"
+			data-target-input="nearest">
+			<input type="text" class="form-control datetimepicker-input"
+				data-target="#datetimepicker1" id="fecha01" placeholder="Fecha inicial"
+				th:field="${consulta.fechaHora1}" />
+			<div class="input-group-append" data-target="#datetimepicker1"
+				data-toggle="datetimepicker">
+				<div class="input-group-text">
+					<i class="fa fa-calendar-alt"></i>
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<div class="form-group row">
+		<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha final:</label>
+		<div class="col-lg-9 input-group date" id="datetimepicker2"
+			data-target-input="nearest">
+			<input type="text" class="form-control datetimepicker-input"
+				data-target="#datetimepicker2" id="fecha02"
+				placeholder="Fecha final"
+				th:field="${consulta.fechaHora2}" />
+			<div class="input-group-append" data-target="#datetimepicker2"
+				data-toggle="datetimepicker">
+				<div class="input-group-text">
+					<i class="fa fa-calendar-alt"></i>
+				</div>
+			</div>			
+		</div>
+	</div>
+	
+<script type="text/javascript">
+$(function() {
+$('#datetimepicker1').datetimepicker({
+	format: "DD/MM/YYYY"
+});
+$('#datetimepicker2').datetimepicker({
+	format: "DD/MM/YYYY"
+});
+});
+</script>
+
+	
+	<div class="form-group row">
+		<div class="col-lg-12 text-center">
+			<button class="btn btn-secondary" type="reset">Cambiar Fechas</button>
+			<button type="submit" class="btn btn-primary">Agregar Fechas</button>
+		</div>
+	</div>
+</form>
+<!-- 	  <script>
+      $(function(){
+    	  $("#buttonb").css("display", "none");
+          $('#show').click(function(){
+              $('#buttonb').show();
+            });
+      });
+</script>	  -->
+		<br>
+		
+	
+		<button type="button" class="btn btn-primary" data-toggle="modal"		
+				data-target="#modalBuscarLocalidad">BUSCAR</button>		
+		</div>
+
+		<!-- <button type="button" class="btn btn-primary" data-toggle="modal"		
+				data-target="#modalBuscarLocalidad" th:action="${editMode}?">BUSCAR</button>style=display:none-->				
+				<br>
+	
+	</div>
+
 	<br>
 	<div class="card">
 		<div class="card-body">
@@ -46,10 +128,12 @@
 	<br>
 	<br>
 			
+	
+	
 			
 	<!-- consulta de patente -->
 			
-		<div class="modal fade" id="modalBuscarPatente" tabindex="-1" role="dialog" aria-labelledby="buscarVehiculoModal" aria-hidden="true">
+ 		<div class="modal fade" id="modalBuscarPatente" tabindex="-1" role="dialog" aria-labelledby="buscarVehiculoModal" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 				<form id="formVehiculo" th:object="${vehiculoD}" th:action="@{/buscarListadoPatente}" method="post">
@@ -76,34 +160,131 @@
 			</div>
 
 				</div>
+				
+			
+		<!-- consulta de tripulante -->			
+				<div class="modal fade" id="modalBuscarTripulante" tabindex="-1" role="dialog" aria-labelledby="buscaTripulanteModal" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				<form id="formTripulante" th:object="${tripulanteD}" th:action="@{/buscarListadoDocumento}" method="post">
+					<div class="modal-header">
+						<h5 class="modal-title" id="buscarTripulanteModal">Buscar Vehiculo</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+							<div class="form-group">
+								<label for="documento">Documento:</label>
+								<input class="form-control" id="documento" th:field="${tripulanteD.documento}" placeholder="Ingresar documento de Tripulante"></input>							
+							</div>					
+					</div>				
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Buscar Tripulante" >						
+					</div>
+					</form>
+
+				</div>
 			</div>
-			</div>
-		
-			
-			
-			
-			
-<div class="alert-danger text-center" th:if="${formVehiculoErrorMessage}" th:text="${formVehiculoErrorMessage}">Name Error</div>
-			
-	</div>	
 
+				</div>
+				
+				
+				
+				
+		<!-- consulta de localidad -->			
+				
+		<div class="modal fade" id="modalBuscarLocalidad" tabindex="-1" role="dialog" aria-labelledby="buscarLocalidadModal" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				<form id="formLocalidad" th:object="${localidadD}" th:action="@{/buscarListadoLocalidad}" method="post">
+					<div class="modal-header">
+						<h5 class="modal-title" id="buscarLocalidadModal">Buscar Vehiculo</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+							<div class="form-group">
+								<label for="localidad">Localidad:</label>
+								<input class="form-control" id="localidad" th:field="${localidadD.nombre}" name="nombre" placeholder="Ingresar nombre de localidad"></input>							
+							</div>					
+					</div>
+					
+					
+			 		
+	<!-- 				
+					<div class="modal-body">
+							<div class="form-group">
+								<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha1:</label>
+										<div class="col-lg-9 input-group date" id="datetimepicker1"
+											data-target-input="nearest">
+											<input type="text" class="form-control datetimepicker-input"
+												data-target="#datetimepicker1" id="fecha01" placeholder="Fecha"
+												th:value="${consulta.fechaHora1}" name="fechaHora1" />
+											<div class="input-group-append" data-target="#datetimepicker1"
+												data-toggle="datetimepicker">
+												<div class="input-group-text">
+													<i class="fa fa-calendar-alt"></i>
+												</div>
+											</div>
+										</div>
+							</div>					
+					</div>
+					<div class="modal-body">
+							<div class="form-group">
+									<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha2:</label>
+											<div class="col-lg-9 input-group date" id="datetimepicker2"
+												data-target-input="nearest">
+												<input type="text" class="form-control datetimepicker-input"
+													data-target="#datetimepicker2" id="fecha02"
+													placeholder="ingresar Fecha de Alta"
+													th:value="${consulta.fechaHora2}" name="fechaHora2"/>
+												<div class="input-group-append" data-target="#datetimepicker2"
+													data-toggle="datetimepicker">
+													<div class="input-group-text">
+														<i class="fa fa-calendar-alt"></i>
+													</div>
+												</div>			
+											</div>
+							</div>					
+					</div>					
+<script type="text/javascript">
+$(function() {
+$('#datetimepicker1').datetimepicker({
+	format: "DD/MM/YYYY"
+});
+$('#datetimepicker2').datetimepicker({
+	format: "DD/MM/YYYY"
+});
+});
+</script>-->
+					
+			 		
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<input type="submit" class="btn btn-primary" value="Buscar Localidad">						
+					</div>
 
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="funciones.js"></script> -->
-<div th:insert="layout/footer :: footer"></div>
+					</form>
+				
+				</div>
+				</div>
 
-</body>
-</html>
+				</div>
+
+</div>
+			
+ <div class="alert-danger text-center" th:if="${formVehiculoErrorMessage}" th:text="${formVehiculoErrorMessage}">Name Error</div>
+
+<!-- <div th:insert="layout/footer :: footer"></div>-->
+ <!-- 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>		
+-->
 </body>
 </html>

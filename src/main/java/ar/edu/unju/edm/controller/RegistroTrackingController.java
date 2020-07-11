@@ -1,6 +1,6 @@
 package ar.edu.unju.edm.controller;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ar.edu.unju.edm.model.ConsultaFecha;
+import ar.edu.unju.edm.model.Localidad;
 import ar.edu.unju.edm.model.RegistroTracking;
 import ar.edu.unju.edm.model.Tripulante;
 import ar.edu.unju.edm.model.Vehiculo;
@@ -32,6 +34,8 @@ public class RegistroTrackingController {
 	@Autowired
 	ILocalidadService localidadService;
 	//Vehiculo unVehiculo;
+	@Autowired
+	ConsultaFecha consulta;
 	
 	@GetMapping("/agregarRegistro")
 	public String agregarR(Model model) {	
@@ -121,32 +125,104 @@ public class RegistroTrackingController {
 	}
 	
 	
-	//agregado nuevo tripulante
+	//agregado
 	@GetMapping("/consultas")
 	public String consultar(Model model){
 		Vehiculo unVehiculo = new Vehiculo();
 		model.addAttribute("vehiculoD", unVehiculo);
 		Tripulante tripulante = new Tripulante();
 		model.addAttribute("tripulanteD", tripulante);
+		//agregado2
+		Localidad unaLocalidad = new Localidad();
+		model.addAttribute("localidadD", unaLocalidad);
+		ConsultaFecha unaConsulta = new ConsultaFecha();
+		model.addAttribute("consulta",unaConsulta);	
 		return "consultas";
 	}
-			//agregado Buscar tripulante por documento
-		@PostMapping("/buscarListadoTripulante")
-		public String buscarListadoTripulante(@ModelAttribute Tripulante tripulante, Model model) throws Exception{
+	
+	
+	//agregado
+	@PostMapping("/buscarListadoPatente")
+	public String buscarListadoPatente(@ModelAttribute Vehiculo vehiculo, Model model) throws Exception{
+		try{
+			Vehiculo vehiculoEncontrado = vehiculoService.buscarVehiculo(vehiculo.getPatente());
 			try{
-				Tripulante tripulanteEncontrado = tripulanteService.buscarTripulante(tripulante.getDocumento());
+				Long id = vehiculoService.devolverIdPatente(vehiculoEncontrado);
+				model.addAttribute("registrosTrackingO",registroTrackingService.obtenerRegistros(id));				
+//				model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
+				//vehiculoService.listarRegistros(id);
+			}catch(Exception e){
+				model.addAttribute("formVehiculoErrorMessage", e.getMessage());							
+			}
+		}catch(Exception e){
+			model.addAttribute("formVehiculoErrorMessage", e.getMessage());
+		}
+		
+		return "consultaTres";
+	}
+		
+	
+	
+	
+
+	
+	//agregado Buscar tripulante por documento
+//	@PostMapping("/buscarListadoDocumento")
+//	public String buscarListadoTripulante(@ModelAttribute Tripulante tripulante, Model model) throws Exception{
+//		try{
+//			Tripulante tripulanteEncontrado = tripulanteService.buscarTripulante(tripulante.getDocumento());
+//			try{
+//				Long id = tripulanteService.devolverIdTripulante(tripulanteEncontrado);
+//				System.out.println(id);
+//				model.addAttribute("oT",registroTrackingService.obtenerRegistrosT(id));				
+//				//model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
+//				//vehiculoService.listarRegistros(id);
+//			}catch(Exception e){
+//				model.addAttribute("formTripulanteErrorMessage", e.getMessage());							
+//			}
+//		}catch(Exception e){
+//			model.addAttribute("formTripulanteErrorMessage", e.getMessage());
+//		}
+//		return "consultaDos";
+//	}
+	
+	
+	
+		
+		
+		//agregado2
+		@PostMapping("/buscarListadoLocalidad")
+		public String buscarListadoLocalidad(@ModelAttribute ("localidadD") Localidad localidad, @ModelAttribute ("consulta") ConsultaFecha consulta, Model model) throws Exception{
+			
+			try{
+				Localidad localidadEncontrada = localidadService.buscarLocalidad(localidad.getNombre());
 				try{
-					Long id = tripulanteService.devolverIdTripulante(tripulanteEncontrado);
-					System.out.println(id);
-					model.addAttribute("oT",registroTrackingService.obtenerRegistros(id));				
-					//model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
-					//vehiculoService.listarRegistros(id);
+					
+					consulta = registroTrackingService.obtenerFechas();
+					Long id = localidadService.devolverIdLocalidad(localidadEncontrada);
+					LocalDateTime date1 = consulta.getFechaHora1().atStartOfDay();
+					LocalDateTime date2 = consulta.getFechaHora2().atStartOfDay();
+					//LocalDateTime date1 = LocalDateTime.of(2020,07,8,00,00,00);
+					//LocalDateTime date2 = LocalDateTime.of(2020,07,12,00,00,00);
+//					System.out.println(id);
+//					System.out.println(date1);
+//					System.out.println(date2);
+					model.addAttribute("registrosTrackingOL",registroTrackingService.obtenerRegistrosOL( date1, date2, id));				
 				}catch(Exception e){
-					model.addAttribute("formTripulanteErrorMessage", e.getMessage());							
+					model.addAttribute("formLocalidadErrorMessage", e.getMessage());							
 				}
 			}catch(Exception e){
-				model.addAttribute("formTripulanteErrorMessage", e.getMessage());
+				model.addAttribute("formLocalidadErrorMessage", e.getMessage());
 			}
-			return "consultaDos";
+			
+			return "consultaUno";
 		}
+		
+		@PostMapping("/buscarFechas")
+		public String buscarFechas(@ModelAttribute ("consulta") ConsultaFecha consulta, Model model){
+			 registroTrackingService.guardarFechas(consulta);
+			return consultar(model);
+		}
+		
+		
 }

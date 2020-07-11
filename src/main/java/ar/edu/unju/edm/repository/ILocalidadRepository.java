@@ -1,6 +1,7 @@
 package ar.edu.unju.edm.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,7 @@ public interface ILocalidadRepository extends JpaRepository<Localidad,Long>{
 
 	@Query("from Localidad e order by e.id")
 	public List<Localidad> obtenerLocalidades();
+	
+	public Optional<Localidad> findByNombre(String nombre);
+
 }

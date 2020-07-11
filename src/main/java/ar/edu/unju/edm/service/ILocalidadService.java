@@ -17,4 +17,7 @@ public interface ILocalidadService {
 	public void eliminar(Long id);
 	public Localidad encontrarLocalidad(Long id) throws Exception;
 
+	public Localidad buscarLocalidad(String nombre)  throws Exception;
+	public Long devolverIdLocalidad(Localidad localidad);
+	
 }

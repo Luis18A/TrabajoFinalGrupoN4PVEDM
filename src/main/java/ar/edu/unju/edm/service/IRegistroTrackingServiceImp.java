@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.edm.model.ConsultaFecha;
 import ar.edu.unju.edm.model.RegistroTracking;
 import ar.edu.unju.edm.repository.IRegistroTrackingRepository;
 
@@ -14,6 +15,8 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService{
 
 	@Autowired
 	IRegistroTrackingRepository iRegistroTrackingRepository;
+	private ConsultaFecha consultaAuxiliar = new ConsultaFecha();
+
 	
 	@Override
 	public void guardarRegistroTracking(RegistroTracking registroTracking) {
@@ -27,10 +30,35 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService{
 		return registros;
 	}
 	//agrego
+//	@Override
+//	public List<RegistroTracking> obtenerRegistrosT(Long id) {
+//		// TODO Auto-generated method stub
+//		List<RegistroTracking> registros = iRegistroTrackingRepository.findByIdTripulanteOrderByFechaHoraAsc(id);
+//		return registros;
+//	}
+	
+	
+	//agregado2
 	@Override
-	public List<RegistroTracking> obtenerRegistrosT(Long id) {
-		// TODO Auto-generated method stub
-		List<RegistroTracking> registros = iRegistroTrackingRepository.findByIdTripulanteOrderByFechaHoraAsc(id);
+	public List<RegistroTracking> obtenerRegistrosOL(LocalDateTime date1, LocalDateTime date2, Long id){
+		List<RegistroTracking> registros = iRegistroTrackingRepository.findByFechaHoraBetween(date1, date2, id);
 		return registros;
 	}
+	@Override
+	public void guardarFechas(ConsultaFecha consulta) {
+		consultaAuxiliar = consulta;
+	}
+	@Override
+	public ConsultaFecha obtenerFechas() {
+		return consultaAuxiliar;
+	}
+	
+//	consulta2
+//	@Override
+//	public List<RegistroTracking> obtenerRegistrosT(Long id) {
+//		List<RegistroTracking> registros = iRegistroTrackingRepository.findByIdTripulanteOrderByFechaHoraAsc(id);
+//		return registros;
+//	}
+
+	
 }
