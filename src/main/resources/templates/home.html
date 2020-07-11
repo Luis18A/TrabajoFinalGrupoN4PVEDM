@@ -1,10 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Informacion sobre el covid 19</title>
+<!-- CSS only -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
 </head>
 <body>
-
+<div th:insert="layout/header2 :: header2"></div>
+	<div class="container">
+	<div class="container mb-4 mt-4">
+	<h2>LO QUE DEBES SABER SOBRE COVID<button type="button" class="btn btn-primary btn-sm ml-4" onclick="location.href='/login'">Ingresar</button></h2>
+	</div>
+	<div class="card-group">
+		<div class="container mb-4 mt-4">
+		<div class="card">
+			<img src="https://i.ytimg.com/vi/QYVNK_Mt1Pw/maxresdefault.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">Sintomas</h5>
+				<p class="card-text">Los síntomas más habituales son los
+					siguientes: Fiebre, Tos seca, Cansancio, Molestias y dolores, Dolor
+					de garganta, Diarrea, Conjuntivitis, Dolor de cabeza, Pérdida del
+					sentido del olfato o del gusto, Los sintomas tardan en presentarse
+					en un plazo de 5 a 6 días desde que se infectan, pero pueden tardar
+					hasta 14.</p>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted">Subido hace 3 minutos.</small>
+			</div>
+		</div>
+		</div>
+		<div class="container mb-4 mt-4">
+		<div class="card">
+			<img src="https://www.medicasur.com.mx/work/models/ms/Resource/9713/1/images/contagio3.png" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">¿Como se transmite esta enfermedad?</h5>
+				<p class="card-text">Se transmite de una persona a otra a través
+					de las gotas procedentes de la nariz o la boca que salen despedidas
+					cuando la persona infectada tose, estornuda o habla, por contacto
+					con manos, superficies u objetos contaminados. Por eso es
+					importante mantener distanciamiento social y tomar las precauciones
+					de contacto que se describen más abajo.</p>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted">Subido hace 3 minutos.</small>
+			</div>
+		</div>
+		</div>
+		<div class="container mb-4 mt-4">
+		<div class="card">
+			<img src="https://www.unse.edu.ar/images/Cecomi%202020/marzo/corona%20-%20header-web-v1.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">¿Como podemos prevenir esta enfermedad?</h5>
+				<p class="card-text">
+					Limpiar y desinfectar las superficies de alto contacto<br>
+					Cubrirse al toser y estornudar<br> Evitar tocarse los ojos, la
+					nariz y la boca<br> Cubra su rostro con un paño de tela en
+					público<br> Practicar el distanciamiento social<br>
+					Lávese las manos con frecuencia. Use agua y jabón o un
+					desinfectante de manos a base de alcohol.
+				</p>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted">Subido hace 3 minutos.</small>
+			</div>
+		</div>
+		</div>
+	</div>
+	</div>
+	<div th:insert="layout/footer :: footer"></div>
+	
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@
 			<div class="col-sm-9">
 				<input class="form-control" type="text" id="nombre"
 					placeholder="Ingrese Nombre de usuario" th:field="*{nombreUsuario}"
-					required>
+					required minlength="8" maxlength="40">
 			</div>
 		</div>
 
@@ -35,7 +35,7 @@
 			<label for="contraseña" class="col-sm-3 col-form-label">Contraseña</label>
 			<div class="col-sm-9">
 				<input type="password" class="form-control" id="contraseña"
-					placeholder="Ingrese Contraseña" th:field="*{password}" required>
+					placeholder="Ingrese Contraseña" th:field="*{password}" required minlength="4" maxlength="35">
 			</div>
 		</div>
 
@@ -44,7 +44,7 @@
 				Real</label>
 			<div class="col-sm-9">
 				<input class="form-control" type="text" id="nombreReal"
-					placeholder="Ingrese Nombre Real" th:field="*{nombreReal}" required>
+					placeholder="Ingrese Nombre Real" th:field="*{nombreReal}" required maxlength="50">
 			</div>
 		</div>
 
@@ -54,7 +54,7 @@
 			<div class="col-sm-9">
 				<input class="form-control" type="text" id="apellidoReal"
 					placeholder="Ingrese Apellido Real" th:field="*{apellidoReal}"
-					required>
+					required maxlength="50">
 			</div>
 		</div>
 		

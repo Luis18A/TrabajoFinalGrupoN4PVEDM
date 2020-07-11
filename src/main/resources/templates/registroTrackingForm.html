@@ -119,7 +119,7 @@
 							<div class="card-body">
 							<h5 class="p-3 mb-2 bg-dark text-white card-title">DETALLES</h5>
 							<label for="detalle" class="font-weight-bold">Ingrese detalles del lugar:</label>
-							<textarea class="form-control" id="detalle" rows="3" placeholder="Ingresar detalles del lugar" th:field="${registroTrackingD.detalleLugarRegistro}"></textarea> <!-- th:field="${registroTrackingD.detalleLugarRegistro}" -->
+							<textarea class="form-control" id="detalle" rows="3" placeholder="Ingresar detalles del lugar" th:field="${registroTrackingD.detalleLugarRegistro}" required maxlength="500"></textarea> <!-- th:field="${registroTrackingD.detalleLugarRegistro}" -->
 							</div>
 						</div>
 					</div>

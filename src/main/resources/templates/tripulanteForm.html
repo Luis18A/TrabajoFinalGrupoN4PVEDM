@@ -19,23 +19,23 @@
 			<div class="form-group row">
 				<label for="inputEmail4">Documento</label> <input type="number"
 					class="form-control" id="inputEmail4" placeholder="Ingrese Numero de Documento" th:field="*{documento}"
-					required>
+					required min="7" max="8">
 			</div>
 			<div class="form-group row">
 				<label for="inputApellido">Apellido</label> <input type="text"
 					class="form-control" id="inputApellido" placeholder="Ingrese Apellido" th:field="*{apellido}"
-					required>
+					required maxlength="50">
 			</div>
 		
 			<div class="form-group row">
 				<label for="inputNombre">Nombre</label> <input type="text"
 					class="form-control" id="inputNombre" placeholder="Ingrese Nombres" th:field="*{nombres}"
-					required>
+					required maxlength="50">
 			</div>
 				<div class="form-group row">
 					<label for="inputNacionalidad">Nacionalidad</label> <input
 						type="text" class="form-control" id="inputNacionalidad" placeholder="Ingrese Nacionalidad" th:field="*{nacionalidad}"
-					required>
+					required maxlength="45">
 				</div>
 				<div class="form-group">
 					<div class="form-check">
