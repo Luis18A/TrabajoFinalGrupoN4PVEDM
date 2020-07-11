@@ -19,5 +19,5 @@ public interface ILocalidadService {
 
 	public Localidad buscarLocalidad(String nombre)  throws Exception;
 	public Long devolverIdLocalidad(Localidad localidad);
-	
+
 }

@@ -10,7 +10,7 @@ import ar.edu.unju.edm.repository.ILocalidadRepository;
 
 @Service
 public class ILocalidadServiceImp implements ILocalidadService{
-
+	
 	@Autowired
 	ILocalidadRepository iLocalidadRepository;
 	//private Localidad localidadAuxiliar = new Localidad();
