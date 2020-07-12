@@ -15,10 +15,12 @@
 	<div th:insert="layout/header2 :: header2"></div>
 	<div class="container">
 		<br>
-
-		<br> <br>
-		<div class="card text-white bg-primary mb-3 d-inline-block col-9" style="max-width: 30rem;">
- 		 <div class="card-header">LOGIN DE USUARIO</div>
+		<br> 
+		<div class="row text-align-center">
+		
+		<div class="card-header text-white bg-info mb-3 col-4 d-inline-block" style="width: auto; margin: auto auto;">
+		 <div class="card-header bg-dark"><h2 class="text-center">LOGIN</h2></div>
+		
   		<div class="card-body">
   		  <form autocomplete="off" class="login" th:object=${usuario} th:action="@{/login}" method="post">
 			<div class="form-group row ">
@@ -29,7 +31,7 @@
 					<input class="form-control" type="text" id="nombreUsuario"
 						placeholder="Ingrese Nombre de usuario" name="nombreUsuario" required>
 				</div>
-			
+			<br>
 			<div class="form-group row">
 				<label for="contraseña" class="col-form-label">Contraseña</label>
 				</div>
@@ -37,18 +39,23 @@
 					<input type="password" class="form-control" id="password"
 						placeholder="Ingrese Contraseña" name="password" required>
 				</div>
-			</div>
+			<br>				
 			
 			<div class="col text-center">
 			<button type="submit" class="btn btn-dark">Ingresar</button>
 			</div>
+
 			<div class="alert-danger text-center" th:if="${formLoginErrorMessage}" th:text="${formLoginErrorMesage}">Name Error</div>
-			<br>
 		</form>
-  		</div>
 		</div>
-		<div th:if="${param.error}" class="alert alert-danger" role="alert">Combinacion Invalida de Usuario y Contraseña</div>
-		<div th:if="${param.logout}" class="alert alert-success" role="alert">Ha salido del Sistema.</div>
+  		</div>
+				
+		</div>
+		<br>
+		<br> 
+		</div>
+		<div th:if="${param.error}" class="alert alert-danger text-center" role="alert">Combinacion Invalida de Usuario y Contraseña</div>
+		<div th:if="${param.logout}" class="alert alert-success text-center" role="alert">Ha salido del Sistema.</div>
 	<div th:insert="layout/footer :: footer"></div>
 </body>
 </html>
