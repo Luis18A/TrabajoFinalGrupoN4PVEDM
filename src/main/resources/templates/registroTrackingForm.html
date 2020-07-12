@@ -14,14 +14,20 @@
 	<br>
 		<h1>REGISTRO TRACKING</h1>
 		<br>
+		<div>
+		<p  class="font-italic">Primero busque un vehiculo, si no lo encuentra, agregue uno.</p>
+		</div>
+		<button type="button" class="btn btn-success" data-toggle="modal"
+				data-target="#modalBuscarVehiculo">Buscar Vehiculo</button>
 		<a th:href="@{/nuevoVehiculo}" class="btn btn-primary"> Agregar Vehiculo </a>
-		<button type="button" class="btn btn-success" data-toggle="modal"
-				data-target="#modalBuscarVehiculo">Buscar Vehiculo</button>		
 				<br>
 				<br>
-		<a th:href="@{/nuevoTripulante}" class="btn btn-primary"> Agregar Tripulante </a>
-		<button type="button" class="btn btn-success" data-toggle="modal"
+		<div>
+		<p  class="font-italic">Primero busque un tripulante, si no lo encuentra, agregue uno.</p>
+		</div>
+			<button type="button" class="btn btn-success" data-toggle="modal"
 				data-target="#modalBuscarTripulante">Buscar Tripulante</button>
+		<a th:href="@{/nuevoTripulante}" class="btn btn-primary"> Agregar Tripulante </a>
 		<!-- <a th:href="@{/nuevaLocalidad}" class="btn btn-primary"> Agregar Localidad </a>
 		<button type="button" class="btn btn-success" data-toggle="modal"
 				data-target="#modalBuscarLocalidad">Buscar Localidad</button>

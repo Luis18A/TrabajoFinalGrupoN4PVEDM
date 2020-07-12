@@ -18,13 +18,15 @@
 </head>
 <body>
 
-<!-- <div th:insert="layout/header2 :: header2"></div> -->
-	
+<!--<div th:insert="layout/header2 :: header2"></div>-->
+	<a class="btn btn-outline-dark my-2 my-sm-0 form-control" href="/" th:href="@{/logout}"> 
+				<span> Salir  </span></a>
 	<div class="container">
 	<br>
 	<div class="card">
 		<div class="card-body">
 		<h6 class="p-3 mb-2 bg-dark text-white card-title">Listado de vehículos por una localidad y rango de fechas-horas</h6>
+		<div class="container">
 		<form class="form" role="form" autocomplete="off" th:object="${consulta}" th:action="@{/buscarFechas}" method="post">
 		<br>
 		<div>
@@ -82,6 +84,7 @@ $('#datetimepicker2').datetimepicker({
 		</div>
 	</div>
 </form>
+</div>
 <!-- 	  <script>
       $(function(){
     	  $("#buttonb").css("display", "none");
@@ -277,10 +280,11 @@ $('#datetimepicker2').datetimepicker({
 				</div>
 
 </div>
+
 			
  <div class="alert-danger text-center" th:if="${formVehiculoErrorMessage}" th:text="${formVehiculoErrorMessage}">Name Error</div>
 
-<!-- <div th:insert="layout/footer :: footer"></div>-->
+<!--<div th:insert="layout/footer :: footer"></div>-->
  <!-- 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

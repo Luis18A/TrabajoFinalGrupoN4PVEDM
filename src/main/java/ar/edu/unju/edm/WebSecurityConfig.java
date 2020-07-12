@@ -26,14 +26,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 			.antMatchers(resources).permitAll()
-			.antMatchers("/").permitAll()
+			.antMatchers("/","/home").permitAll()
 				// funcionando
-				//.antMatchers("/agregarRegistro/", "/nuevoVehiculo/", "/buscarVehiculo", "/buscarTripulante", "/editarLocalidad/{id}").hasAuthority("Registrador")
+				.antMatchers("/agregarRegistro/", "/nuevoVehiculo/", "/buscarVehiculo", "/buscarTripulante", "/editarLocalidad/{id}").hasAuthority("Registrador")
 				// funcionando
-				//.antMatchers("/consultas", "/buscarListadoTripulante", "/buscarListadoPatente").hasAuthority("Consultor")
+				.antMatchers("/consultas", "/buscarListadoTripulante", "/buscarListadoPatente").hasAuthority("Consultor")
 				// funcionando
-				//.antMatchers("/localidad", "/nuevaLocalidad", "/saveLocalidad", "/eliminarLocalidad/{id}", "/editarLocalidad", "/editarLocalidad/{id}", "/usuario", "/saveUsuario", "/nuevoUsuario", "/editarUsuario/{id}", "/eliminarUsuario/{id}", "/editarUsuario/", "/cancelar").hasAuthority("Bd")
-				//.anyRequest().authenticated()
+				.antMatchers("/localidad", "/nuevaLocalidad", "/saveLocalidad", "/eliminarLocalidad/{id}", "/editarLocalidad", "/editarLocalidad/{id}", "/usuario", "/saveUsuario", "/nuevoUsuario", "/editarUsuario/{id}", "/eliminarUsuario/{id}", "/editarUsuario/", "/cancelar").hasAuthority("Bd")
+				.anyRequest().authenticated()
 				.and()
 				.formLogin().loginPage("/login").permitAll()
 				.successHandler(autenticacion).failureUrl("/login?error=true").usernameParameter("nombreUsuario")

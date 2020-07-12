@@ -92,7 +92,7 @@ public class UsuarioController {
 			model.addAttribute("listErrorMessage", e.getMessage());
 		}
 		
-		return mostrarUsuarios(model);
+		return "redirect:/usuario";
 		
 	}
 	

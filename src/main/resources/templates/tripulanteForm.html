@@ -17,9 +17,9 @@
 	<h1>GESTION DE TRIPULANTES</h1>
 	<form autocomplete="off" th:object=${tripulanteD} th:action="@{/saveTripulante}" method="post">
 			<div class="form-group row">
-				<label for="inputEmail4">Documento</label> <input type="number"
+				<label for="inputEmail4">Documento</label> <input type="text"
 					class="form-control" id="inputEmail4" placeholder="Ingrese Numero de Documento" th:field="*{documento}"
-					required min="7" max="8">
+					required maxlength="8">
 			</div>
 			<div class="form-group row">
 				<label for="inputApellido">Apellido</label> <input type="text"
@@ -45,6 +45,7 @@
 					</div>
 				</div>
 					<button type="submit" class="btn btn-primary">Agregar</button>
+					<a class="btn btn-danger" th:href="@{nuevoTripulante/volver}">Cancelar y Volver</a>
 	</form>
 	<br>
 	</div>
