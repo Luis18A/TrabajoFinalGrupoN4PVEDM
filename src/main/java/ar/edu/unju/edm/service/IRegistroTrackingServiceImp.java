@@ -1,6 +1,7 @@
 package ar.edu.unju.edm.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.ConsultaFecha;
 import ar.edu.unju.edm.model.RegistroTracking;
+import ar.edu.unju.edm.model.Tripulante;
 import ar.edu.unju.edm.repository.IRegistroTrackingRepository;
 	
 @Service
@@ -16,6 +18,8 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService{
 	@Autowired
 	IRegistroTrackingRepository iRegistroTrackingRepository;
 	private ConsultaFecha consultaAuxiliar = new ConsultaFecha();
+	private List<RegistroTracking> registros = new ArrayList<>();
+
 
 	
 	@Override
@@ -51,6 +55,21 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService{
 	@Override
 	public ConsultaFecha obtenerFechas() {
 		return consultaAuxiliar;
+	}
+	
+	
+	//consulta2nuevo
+	@Override
+	public List<RegistroTracking> obtenerRegistrosCD(Tripulante tripulante) {
+//		RegistroTracking registro;
+//		for (int i=0;i<=tripulante.getRegistrosT().size();i++){
+//			registro = tripulante.getRegistrosT().get(i);
+//			System.out.println(registro.getIdRegistro());
+//			registros.add(registro);
+//		}		
+		registros = tripulante.getRegistrosT();
+		
+		return registros;
 	}
 	
 //	consulta2

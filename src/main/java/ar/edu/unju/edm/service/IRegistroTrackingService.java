@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.ConsultaFecha;
 import ar.edu.unju.edm.model.RegistroTracking;
+import ar.edu.unju.edm.model.Tripulante;
 
 @Service
 public interface IRegistroTrackingService {
@@ -21,4 +22,9 @@ public interface IRegistroTrackingService {
 
 	public void guardarFechas(ConsultaFecha consulta);
 	public ConsultaFecha obtenerFechas();
+	
+	
+	//consulta2nuevo
+	public List<RegistroTracking> obtenerRegistrosCD(Tripulante tripulante);
+	
 }

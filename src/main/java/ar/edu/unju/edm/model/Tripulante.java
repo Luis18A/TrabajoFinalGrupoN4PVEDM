@@ -1,14 +1,19 @@
 package ar.edu.unju.edm.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name = "tripulante")
 public class Tripulante implements Serializable{
@@ -34,59 +39,84 @@ public class Tripulante implements Serializable{
 	@Column(name = "NACIONALIDAD")
 	private String nacionalidad;
 	
+	@ManyToMany(mappedBy="tripulantes")
+	private List<RegistroTracking> registrosT;
 	
-	public Tripulante(Long idTripulante, String documento, String apellido, String nombres, String nacionalidad) {
-		super();
-		this.idTripulante = idTripulante;
-		this.documento = documento;
-		this.apellido = apellido;
-		this.nombres = nombres;
-		this.nacionalidad = nacionalidad;
-	}
+	
 	public Tripulante() {
 		// TODO Auto-generated constructor stub
 	}
+
 	public Long getIdTripulante() {
 		return idTripulante;
 	}
+
 	public void setIdTripulante(Long idTripulante) {
 		this.idTripulante = idTripulante;
 	}
+
 	public String getDocumento() {
 		return documento;
 	}
+
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
+
 	public String getApellido() {
 		return apellido;
 	}
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
 	public String getNombres() {
 		return nombres;
 	}
+
 	public void setNombres(String nombres) {
 		this.nombres = nombres;
 	}
+
 	public String getNacionalidad() {
 		return nacionalidad;
 	}
+
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
+
+	public List<RegistroTracking> getRegistrosT() {
+		return registrosT;
+	}
+
+	public void setRegistrosT(List<RegistroTracking> registrosT) {
+		this.registrosT = registrosT;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
-		result = prime * result + ((documento == null) ? 0 : documento.hashCode());
-		result = prime * result + ((idTripulante == null) ? 0 : idTripulante.hashCode());
-		result = prime * result + ((nacionalidad == null) ? 0 : nacionalidad.hashCode());
+		result = prime * result
+				+ ((apellido == null) ? 0 : apellido.hashCode());
+		result = prime * result
+				+ ((documento == null) ? 0 : documento.hashCode());
+		result = prime * result
+				+ ((idTripulante == null) ? 0 : idTripulante.hashCode());
+		result = prime * result
+				+ ((nacionalidad == null) ? 0 : nacionalidad.hashCode());
 		result = prime * result + ((nombres == null) ? 0 : nombres.hashCode());
+		result = prime * result
+				+ ((registrosT == null) ? 0 : registrosT.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -121,11 +151,34 @@ public class Tripulante implements Serializable{
 				return false;
 		} else if (!nombres.equals(other.nombres))
 			return false;
+		if (registrosT == null) {
+			if (other.registrosT != null)
+				return false;
+		} else if (!registrosT.equals(other.registrosT))
+			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Tripulante [idTripulante=" + idTripulante + ", documento=" + documento + ", apellido=" + apellido
-				+ ", nombres=" + nombres + ", nacionalidad=" + nacionalidad + "]";
+		return "Tripulante [idTripulante=" + idTripulante + ", documento="
+				+ documento + ", apellido=" + apellido + ", nombres=" + nombres
+				+ ", nacionalidad=" + nacionalidad + ", registrosT="
+				+ registrosT + "]";
 	}
+
+	public Tripulante(Long idTripulante, String documento, String apellido,
+			String nombres, String nacionalidad,
+			List<RegistroTracking> registrosT) {
+		super();
+		this.idTripulante = idTripulante;
+		this.documento = documento;
+		this.apellido = apellido;
+		this.nombres = nombres;
+		this.nacionalidad = nacionalidad;
+		this.registrosT = registrosT;
+	}
+	
+	
+
 }

@@ -154,7 +154,8 @@ public class RegistroTrackingController {
 				model.addAttribute("formVehiculoErrorMessage", e.getMessage());							
 			}
 		}catch(Exception e){
-			model.addAttribute("formVehiculoErrorMessage", e.getMessage());
+			model.addAttribute("formVehiculo1ErrorMessage", e.getMessage());
+			return consultar(model);
 		}
 		
 		return "consultaTres";
@@ -166,24 +167,29 @@ public class RegistroTrackingController {
 
 	
 	//agregado Buscar tripulante por documento
-//	@PostMapping("/buscarListadoDocumento")
-//	public String buscarListadoTripulante(@ModelAttribute Tripulante tripulante, Model model) throws Exception{
-//		try{
-//			Tripulante tripulanteEncontrado = tripulanteService.buscarTripulante(tripulante.getDocumento());
-//			try{
-//				Long id = tripulanteService.devolverIdTripulante(tripulanteEncontrado);
-//				System.out.println(id);
-//				model.addAttribute("oT",registroTrackingService.obtenerRegistrosT(id));				
-//				//model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
-//				//vehiculoService.listarRegistros(id);
-//			}catch(Exception e){
-//				model.addAttribute("formTripulanteErrorMessage", e.getMessage());							
-//			}
-//		}catch(Exception e){
-//			model.addAttribute("formTripulanteErrorMessage", e.getMessage());
-//		}
-//		return "consultaDos";
-//	}
+	@PostMapping("/buscarListadoDocumento")
+	public String buscarListadoTripulante(@ModelAttribute("tripulanteD") Tripulante tripulante, Model model) throws Exception{
+		try{
+			Tripulante tripulanteEncontrado = tripulanteService.buscarTripulante(tripulante.getDocumento());
+			try{
+				model.addAttribute("registrosTrackingCD",registroTrackingService.obtenerRegistrosCD(tripulanteEncontrado));				
+//				for (int i=1;i<=tripulanteEncontrado.getRegistrosT().size() ;i++){
+//					System.out.println(tripulanteEncontrado.getRegistrosT().get(i).getIdRegistro());
+//				}
+				//Long id = tripulanteService.devolverIdTripulante(tripulanteEncontrado);
+				//System.out.println(id);
+				//model.addAttribute("oT",registroTrackingService.obtenerRegistrosT(id));				
+				//model.addAttribute("registrosTrackingO",vehiculoService.obtenerRegistros(id));
+				//vehiculoService.listarRegistros(id);
+			}catch(Exception e){
+				model.addAttribute("formTripulanteErrorMessage", e.getMessage());							
+			}
+		}catch(Exception e){
+			model.addAttribute("formTripulanteErrorMessage", e.getMessage());
+			return consultar(model);
+		}
+		return "consultaDos";
+	}
 	
 	
 	
