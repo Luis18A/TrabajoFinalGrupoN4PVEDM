@@ -28,11 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(resources).permitAll()
 			.antMatchers("/","/home").permitAll()
 				// funcionando
-				.antMatchers("/agregarRegistro/", "/nuevoVehiculo/", "/buscarVehiculo", "/buscarTripulante", "/editarLocalidad/{id}").hasAuthority("Registrador")
+				.antMatchers("/agregarRegistro/","/nuevoTripulante","/nuevoVehiculo").hasAuthority("Registrador")
 				// funcionando
-				.antMatchers("/consultas", "/buscarListadoTripulante", "/buscarListadoPatente").hasAuthority("Consultor")
+				.antMatchers("/consultas").hasAuthority("Consultor")
 				// funcionando
-				.antMatchers("/localidad", "/nuevaLocalidad", "/saveLocalidad", "/eliminarLocalidad/{id}", "/editarLocalidad", "/editarLocalidad/{id}", "/usuario", "/saveUsuario", "/nuevoUsuario", "/editarUsuario/{id}", "/eliminarUsuario/{id}", "/editarUsuario/", "/cancelar").hasAuthority("Bd")
+				.antMatchers("/localidad", "/usuario", "/nuevoUsuario", "/nuevaLocalidad").hasAuthority("Bd")
 				.anyRequest().authenticated()
 				.and()
 				.formLogin().loginPage("/login").permitAll()

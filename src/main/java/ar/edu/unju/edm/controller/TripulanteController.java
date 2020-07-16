@@ -46,11 +46,11 @@ public class TripulanteController {
 	//TODOESTO ESTA EN EL REGISTROTRACKINGCONTROLLER FIJARSE
 	//ver video de muchos a muchos por el tema de try catch, falta eso
 	
-	@GetMapping("/tripulante")
-	public String mostrarTripulantes(Model model){
-		model.addAttribute("tripulantes",tripulanteService.obtenerTripulantes());
-		return "tripulante";	
-	}
+//	@GetMapping("/tripulante")
+//	public String mostrarTripulantes(Model model){
+//		model.addAttribute("tripulantes",tripulanteService.obtenerTripulantes());
+//		return "tripulante";	
+//	}
 	@GetMapping("/nuevoTripulante/volver")
 	public String cancelarRegistro(ModelMap model){
 		return "redirect:/agregarRegistro";

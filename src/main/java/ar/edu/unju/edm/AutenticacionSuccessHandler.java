@@ -30,6 +30,7 @@ public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler
 		for (GrantedAuthority grantedAuthority : authorities) {
 			if(grantedAuthority.getAuthority().equals("Registrador")) {
 				tipoRegistrador = true;
+				
 				break;
 			}else {
 				if(grantedAuthority.getAuthority().equals("Consultor")) {

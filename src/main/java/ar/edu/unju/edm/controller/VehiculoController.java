@@ -36,11 +36,11 @@ public class VehiculoController {
 		return "redirect:/agregarRegistro"; 
 	}
 	
-	@GetMapping("/vehiculo")
-	public String mostrarVehiculos(Model model){
-		model.addAttribute("vehiculos", vehiculoService.obtenerVehiculos());
-		return "vehiculo";	
-	}
+	//@GetMapping("/vehiculo")
+	//public String mostrarVehiculos(Model model){
+	//	model.addAttribute("vehiculos", vehiculoService.obtenerVehiculos());
+	//	return "vehiculo";	
+	//}
 	@GetMapping("/nuevoVehiculo/volver")
 	public String cancelarRegistro(ModelMap model){
 		return "redirect:/agregarRegistro";
