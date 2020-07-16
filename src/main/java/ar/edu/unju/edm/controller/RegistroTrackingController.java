@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -222,6 +223,22 @@ public class RegistroTrackingController {
 			
 			return "consultaUno";
 		}
+		
+		@GetMapping("/buscarListadoLocalidad/{idRegistro}")
+		public String verTripulantes(Model model, @PathVariable(name="idRegistro") Long id) {
+			try {
+				RegistroTracking registroEncontrado = registroTrackingService.buscarRegistro(id);
+				//System.out.println(registroEncontrado.getIdRegistro());
+				model.addAttribute("tripulantes", registroTrackingService.obtenerTripulantes(registroEncontrado));
+				
+			}catch(Exception e) {
+				model.addAttribute("listErrorMessage", e.getMessage());
+			}
+			
+			return "listadoUno";
+			
+		}
+		
 		
 		@PostMapping("/buscarFechas")
 		public String buscarFechas(@ModelAttribute ("consulta") ConsultaFecha consulta, Model model){

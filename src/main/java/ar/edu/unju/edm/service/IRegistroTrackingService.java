@@ -27,4 +27,7 @@ public interface IRegistroTrackingService {
 	//consulta2nuevo
 	public List<RegistroTracking> obtenerRegistrosCD(Tripulante tripulante);
 	
+	public RegistroTracking buscarRegistro(Long id);
+	public List<Tripulante> obtenerTripulantes(RegistroTracking registroTracking);
+	
 }

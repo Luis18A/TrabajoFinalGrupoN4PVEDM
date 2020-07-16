@@ -19,7 +19,7 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService{
 	IRegistroTrackingRepository iRegistroTrackingRepository;
 	private ConsultaFecha consultaAuxiliar = new ConsultaFecha();
 	private List<RegistroTracking> registros = new ArrayList<>();
-
+	private List<Tripulante> tripulantes = new ArrayList<>();
 
 	
 	@Override
@@ -71,6 +71,27 @@ public class IRegistroTrackingServiceImp implements IRegistroTrackingService{
 		
 		return registros;
 	}
+	
+	
+	//consulta1nuevo
+	
+	@Override
+	public RegistroTracking buscarRegistro(Long id) {
+		return iRegistroTrackingRepository.findByIdRegistro(id);
+	}
+	
+	
+	
+	@Override
+	public List<Tripulante> obtenerTripulantes(RegistroTracking registroTracking) {
+		
+		tripulantes = registroTracking.getTripulantes();
+		//tripulantes = ;
+		return tripulantes;
+	}
+	
+
+
 	
 //	consulta2
 //	@Override
