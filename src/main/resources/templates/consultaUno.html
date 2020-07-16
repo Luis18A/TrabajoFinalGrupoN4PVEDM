@@ -33,8 +33,9 @@
 					      <td th:text = "${registroTrackingO.vehiculo.titular}"></td>
 					      <td th:text = "${registroTrackingO.localidad.nombre}"></td>
 					      <td th:text = "${registroTrackingO.detalleLugarRegistro}"></td>
-					      <td>
-					      	<a class="btn btn-outline-info"href="#">Ver tripulantes</a>
+					      <td>					      
+					      
+					      	<a class="btn btn-outline-info" href="#" th:href="@{'/buscarListadoLocalidad/'+${registroTrackingO.idRegistro}}">Ver tripulantes</a>
 					      </td>
 					</tr>
 
