@@ -5,8 +5,10 @@
 <meta charset="ISO-8859-1">
 <title>Vehiculos</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="css/estilos.css">
+
 </head>
-<body>
+<body class="fondoB">
 <div th:insert="layout/header2 :: header2"></div>
 
 	<div class="container">
@@ -16,7 +18,7 @@
 		<a th:href="@{/nuevoVehiculo}" class="btn btn-primary"> Nuevo </a>
 		<br>
 		<br>
-		<div class="table-responsive">
+		<div class="table-responsive bg-light">
 			<table class="table table-striped">
 			  <thead>
 			    <tr>

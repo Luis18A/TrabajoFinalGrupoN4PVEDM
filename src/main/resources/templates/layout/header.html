@@ -1,9 +1,12 @@
 <!-- RECORDAR QUE HAY QUE CAMBIAR EL HREF DE CADA ENLACE PARA IR A LA PAGINA CORRESPONDIENTE EJEMPLO: href="home" -->
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" href="static/css/estilos.css">
+
 <body>
 	<div id="header" th:fragment="header">
-		<nav class="navbar navbar-expand-lg navbar-light bg-info">
-		  <a class="navbar-brand" href="#">TRACKING DE CAMIONES</a>
+		<nav class="navbar navbar-expand-lg navbar-light fondo">
+		<img th:src="@{/img/camion2.png}" alt="camion" class="camion-img" src="../../static/img/camion2.png">&nbsp;&nbsp;&nbsp;
+		  <a class="navbar-brand font-weight-bold" href="#">TRACKING DE CAMIONES</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>

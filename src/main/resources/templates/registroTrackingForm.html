@@ -5,8 +5,10 @@
 <meta charset="ISO-8859-1">
 <title>Registro Tracking</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="css/estilos.css">
+
 </head>
-<body>
+<body class="fondoB">
 <div th:insert="layout/header2 :: header2"></div>
 <div class="alert-danger text-center" th:if="${formTripulanteErrorMessage}" th:text="${formTripulanteErrorMessage}">Name Error</div>
 <div class="alert-danger text-center" th:if="${formVehiculoErrorMessage}" th:text="${formVehiculoErrorMessage}">Name Error</div>
